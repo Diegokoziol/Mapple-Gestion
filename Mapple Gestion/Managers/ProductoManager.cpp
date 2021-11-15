@@ -6,6 +6,17 @@
 #include "../DTOs/ProductoDto.h"
 using namespace std;
 
+bool ProductoManager::guardarNuevo(ProductoModel &producto)
+{
+    ProductoDto dto;
+    dto._codigoProducto = producto.getCodigoProducto();
+    strcpy(dto._descripcionProducto, producto.getDescripcionProducto().c_str());
+    dto._precioProducto = producto.getPrecioProducto();
+    dto._stockDisponible = producto.getStockDisponible();
+
+    return ProductoRepositorio::agregar(dto);
+}
+
 bool ProductoManager::cargar(int id, ProductoModel &producto)
 {
     ProductoModel modelo;

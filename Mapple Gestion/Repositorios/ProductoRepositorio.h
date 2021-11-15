@@ -6,7 +6,7 @@
 class ProductoRepositorio
 {
 public:
-    static int agregar(ProductoDto producto);
+    static bool agregar(ProductoDto producto);
     static bool leer(int pos, ProductoDto &producto);
     static bool sobreescribir(int pos, ProductoDto producto);
 };
