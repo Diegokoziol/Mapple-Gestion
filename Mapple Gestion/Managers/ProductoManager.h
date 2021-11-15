@@ -1,0 +1,15 @@
+#ifndef PRODUCTOMANAGER_H_INCLUDED
+#define PRODUCTOMANAGER_H_INCLUDED
+
+#include "../Models/ProductoModel.h"
+#include "../DTOs/ProductoDto.h"
+
+class ProductoManager
+{
+public:
+    static bool guardarNuevo(ProductoModel &producto);
+    static bool guardarNuevo(int id, ProductoModel &producto);
+    static bool sobreescribir(ProductoModel &producto);
+};
+
+#endif // PRODUCTOMANAGER_H_INCLUDED
