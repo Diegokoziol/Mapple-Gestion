@@ -8,7 +8,7 @@ class ProductoManager
 {
 public:
     static bool guardarNuevo(ProductoModel &producto);
-    static bool guardarNuevo(int id, ProductoModel &producto);
+    static bool cargar(int id, ProductoModel &producto);
     static bool sobreescribir(ProductoModel &producto);
 };
 
