@@ -10,6 +10,7 @@ public:
     static bool guardarNuevo(ProductoModel &producto);
     static bool cargar(int id, ProductoModel &producto);
     static bool sobreescribir(ProductoModel &producto);
+    static bool existe(int id);
 };
 
 #endif // PRODUCTOMANAGER_H_INCLUDED

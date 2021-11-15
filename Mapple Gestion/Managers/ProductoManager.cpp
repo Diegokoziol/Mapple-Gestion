@@ -8,6 +8,11 @@ using namespace std;
 
 bool ProductoManager::guardarNuevo(ProductoModel &producto)
 {
+    //Validar que no esté usado el código del producto
+    //Está validación es redundante en producto porque la capa de usuario ya la habría hecho a esta altura
+    //Se hace acá para no confiar una validación tal en la capa usuario
+    if(existe(producto.getCodigoProducto())) return false;
+
     ProductoDto dto;
     dto._codigoProducto = producto.getCodigoProducto();
     strcpy(dto._descripcionProducto, producto.getDescripcionProducto().c_str());
@@ -43,5 +48,20 @@ bool ProductoManager::cargar(int id, ProductoModel &producto)
     }
 
     //O nunca pudo abrir el archivo, o no se encontró el código buscado
+    return false;
+}
+
+
+bool ProductoManager::existe(int id)
+{
+    ProductoDto dto;
+    int pos=0;
+    while(ProductoRepositorio::leer(pos++, dto))
+    {
+        if(dto._codigoProducto==id)
+        {
+            return true;
+        }
+    }
     return false;
 }
