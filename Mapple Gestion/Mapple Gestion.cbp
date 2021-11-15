@@ -32,6 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="DTOs/ProductoDto.h" />
+		<Unit filename="Managers/ProductoManager.cpp" />
+		<Unit filename="Managers/ProductoManager.h" />
+		<Unit filename="Models/ProductoModel.cpp" />
+		<Unit filename="Models/ProductoModel.h" />
+		<Unit filename="Repositorios/ProductoRepositorio.cpp" />
+		<Unit filename="Repositorios/ProductoRepositorio.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
