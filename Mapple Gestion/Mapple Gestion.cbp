@@ -35,6 +35,8 @@
 		<Unit filename="DTOs/ProductoDto.h" />
 		<Unit filename="Managers/ProductoManager.cpp" />
 		<Unit filename="Managers/ProductoManager.h" />
+		<Unit filename="Models/Fecha.cpp" />
+		<Unit filename="Models/Fecha.h" />
 		<Unit filename="Models/ProductoModel.cpp" />
 		<Unit filename="Models/ProductoModel.h" />
 		<Unit filename="Repositorios/ProductoRepositorio.cpp" />
