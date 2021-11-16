@@ -51,6 +51,28 @@ bool ProductoManager::cargar(int id, ProductoModel &producto)
     return false;
 }
 
+bool ProductoManager::sobreescribir(ProductoModel &producto)
+{
+    ProductoDto dto;
+
+    int pos=0;
+    while(ProductoRepositorio::leer(pos, dto))
+    {
+        if(dto._codigoProducto==producto.getCodigoProducto())
+        {
+            dto._codigoProducto = producto.getCodigoProducto();
+            strcpy(dto._descripcionProducto, producto.getDescripcionProducto().c_str());
+            dto._precioProducto = producto.getPrecioProducto();
+            dto._stockDisponible = producto.getStockDisponible();
+
+            return ProductoRepositorio::sobreescribir(pos, dto);
+        }
+        pos++;
+    }
+
+    //O nunca pudo abrir el archivo, o no se encontró el código buscado
+    return false;
+}
 
 bool ProductoManager::existe(int id)
 {
