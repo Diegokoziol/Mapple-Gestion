@@ -1,6 +1,6 @@
 #ifndef GASTODTO_H_INCLUDED
 #define GASTODTO_H_INCLUDED
-#include "Fecha.h"
+#include "../Models/Fecha.h"
 
 class GastoDto{
     public:

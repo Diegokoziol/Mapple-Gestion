@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
-#include "Fecha.h"
-#include "GastoModel.h"
+#include "../Models/Fecha.h"
+#include "../Models/GastoModel.h"
 
 
 using namespace std;
@@ -9,9 +9,8 @@ using namespace std;
 GastoModel::GastoModel(){
     _id = 0;
     _montoUnitario = 0;
-    _descripcionGasto = descripcion;
     _unidades = 0;
-    _fecha = Fecha();
+
 }
 
 int GastoModel::getId(){

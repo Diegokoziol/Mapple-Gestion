@@ -1,7 +1,7 @@
 #ifndef GASTOREPOSITORIO_H_INCLUDED
 #define GASTOREPOSITORIO_H_INCLUDED
 
-#include "GastoDto.h"
+#include "../DTOs/GastoDto.h"
 
 class GastoRepositorio{
     public:

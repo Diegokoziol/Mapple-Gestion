@@ -1,8 +1,8 @@
 #ifndef GASTOMODEL_H_INCLUDED
 #define GASTOMODEL_H_INCLUDED
-#include<iostream>
+
 #include<string>
-#include "Fecha.h"
+#include "../Models/Fecha.h"
 
 class GastoModel{
 

@@ -2,7 +2,7 @@
 #include<vector>
 #include <cstring>
 #include <string>
-#include "GastoManager.h"
+#include "../Managers/GastoManager.h"
 #include "../Models/GastoModel.h"
 #include "../DTOs/GastoDto.h"
 #include "../Repositorios/GastoRepositorio.h"
@@ -11,9 +11,27 @@
 
 using namespace std;
 
-GastoManager::guardarNuevo(GastoModel &gasto){/// modificar
-
-    if(existe(gasto.getId())) return false;
+bool GastoManager::guardarNuevo(GastoModel &gasto){/// modificar
+    vector<GastoModel> gastos = leerTodos();
+    int mayorID = 0;
+    for(int i = 0; i < gastos.size(); i++){
+        if(gastos[i].getId()> mayorID){
+            mayorID = gastos[i].getId();
+        }
+    }
+    gasto.setId(mayorID + 1);
+    gastos.push_back(gasto);
+    FILE *file = fopen("Gastos.dat", "ab");
+    if(file == NULL){
+        return false;
+    }
+    for(int i = 0; i < gastos.size(); i++){
+        fwrite(&gastos[i], sizeof(GastoModel), 1, file);
+    }
+    fclose(file);
+    return true;
+}
+   /*
 
     GastoDto dto;
     dto._id = gasto.getId();
@@ -24,17 +42,22 @@ GastoManager::guardarNuevo(GastoModel &gasto){/// modificar
 
     return GastoRepositorio::agregar(dto);
 
-}
-GastoManager::leerTodos(){
-vector<GastoDto> dto = GastoRepositorio::leer();
-vector<GastoModel> gastos;
-for (int i=0; i<dto.size(),i++){
-    GastoModel gasto;
-    gasto.setId(dto[i]._id);
-    gasto.setDescripcionGasto(dto[i]._descripcionGasto);
-    gasto.setMontoUnitario(dto[i]._montoUnitario);
-    gasto.setUnidades(dto[i]._unidades);
-    gastos.push_back(gasto);
+}*/
+vector <GastoModel> GastoManager::leerTodos(){
+    GastoDto dto;
+    vector <GastoModel> gastos;
+    int pos=0;
+    while(GastoRepositorio::leer(pos++,dto)){
+        GastoModel gasto;
+        gasto.setId(dto._id);
+        gasto.setDescripcionGasto(dto._descripcionGasto);
+        gasto.setMontoUnitario(dto._montoUnitario);
+        gasto.setFecha(dto._fecha);
+        gasto.setUnidades(dto._unidades);
+        gastos.push_back(gasto);
+    }
+    return gastos;
 }
 
-}
+
+

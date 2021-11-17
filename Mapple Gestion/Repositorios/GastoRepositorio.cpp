@@ -8,6 +8,7 @@ bool GastoRepositorio::agregar(GastoDto gasto){
     if(file==NULL) return false;
 
     bool wrote = fwrite(&gasto, sizeof(GastoDto), 1, file);
+    fclose(file);
     return wrote;
 }
 
