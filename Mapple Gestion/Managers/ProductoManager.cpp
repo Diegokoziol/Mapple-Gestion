@@ -8,10 +8,11 @@ using namespace std;
 
 bool ProductoManager::guardarNuevo(ProductoModel &producto)
 {
-    //Validar que no esté usado el código del producto
-    //Está validación es redundante en producto porque la capa de usuario ya la habría hecho a esta altura
-    //Se hace acá para no confiar una validación tal en la capa usuario
     if(existe(producto.getCodigoProducto())) return false;
+    if(producto.getCodigoProducto()<1) return false;
+    if(producto.getDescripcionProducto().length()<1) return false;
+    if(producto.getPrecioProducto()<0) return false;
+    if(producto.getStockDisponible()<0) return false;
 
     ProductoDto dto;
     dto._codigoProducto = producto.getCodigoProducto();
@@ -53,6 +54,11 @@ bool ProductoManager::cargar(int id, ProductoModel &producto)
 
 bool ProductoManager::sobreescribir(ProductoModel &producto)
 {
+    if(producto.getCodigoProducto()<1) return false;
+    if(producto.getDescripcionProducto().length()<1) return false;
+    if(producto.getPrecioProducto()<0) return false;
+    if(producto.getStockDisponible()<0) return false;
+
     ProductoDto dto;
 
     int pos=0;
