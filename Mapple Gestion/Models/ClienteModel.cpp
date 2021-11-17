@@ -2,12 +2,9 @@
 #include <string>
 #include "ClienteModel.h"
 
-using namespace std;
 
-
-ClienteModel::ClienteModel(){///--------
+ClienteModel::ClienteModel(){
     _DNI = 0;
-
 }
 
 ClienteModel::ClienteModel(int DNI, string nombre, string apellido, string direccion, string telefono){

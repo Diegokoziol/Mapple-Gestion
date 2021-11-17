@@ -3,7 +3,7 @@
 
 bool ClienteRepositorio::agregar(ClienteDto cliente)
 {
-    FILE *file = fopen("clientes.dat", "ab");
+    FILE *file = fopen("Clientes.dat", "ab");
     if(file == NULL) return false;
 
     bool wrote = fwrite(&cliente, sizeof(ClienteDto), 1, file);
@@ -13,7 +13,7 @@ bool ClienteRepositorio::agregar(ClienteDto cliente)
 
 bool ClienteRepositorio::leer(int pos, ClienteDto &cliente)
 {
-    FILE *file = fopen("clientes.dat", "rb");
+    FILE *file = fopen("Clientes.dat", "rb");
     if(file == NULL) return false;
 
     fseek(file, pos * sizeof(ClienteDto), SEEK_SET);

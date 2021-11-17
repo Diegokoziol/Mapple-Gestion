@@ -6,9 +6,6 @@
 #include "../Repositorios/ClienteRepositorio.h"
 #include "../DTOs/ClienteDto.h"
 
-
-using namespace std;
-
 bool ClienteManager::existe(int DNI){
     ClienteDto cliente;
     int pos = 0;
@@ -22,17 +19,15 @@ bool ClienteManager::existe(int DNI){
 
 
 bool ClienteManager::cargar(int DNI, ClienteModel &cliente){
-     ClienteDto dto;
-     ClienteModel modelo;
-     int pos = 0;
-        while(ClienteRepositorio::leer(pos++, dto)){
-            if(dto._DNI == DNI){
-                cliente = ClienteModel(dto._DNI, dto._nombre, dto._apellido, dto._direccion, dto._telefono);
+    ClienteDto dto;
+    int pos = 0;
+    while(ClienteRepositorio::leer(pos++, dto)){
+        if(dto._DNI == DNI){
+            cliente = ClienteModel(dto._DNI, dto._nombre, dto._apellido, dto._direccion, dto._telefono);
             return true;
-            }
         }
+    }
     return false;
-
 }
 
 
@@ -41,9 +36,10 @@ bool ClienteManager::guardarNuevo(ClienteModel &cliente){
 
     ClienteDto dto;
     dto._DNI = cliente.getDNI();
-    strcpy(dto._nombre, cliente.getNombre().c_str());
-    strcpy(dto._apellido, cliente.getApellido().c_str());
-    strcpy(dto._direccion, cliente.getDireccion().c_str());
-    strcpy(dto._telefono, cliente.getTelefono().c_str());
+    strcpy(dto._nombre, cliente.getNombre().substr(0,29).c_str());
+    strcpy(dto._apellido, cliente.getApellido().substr(0,29).c_str());
+    strcpy(dto._direccion, cliente.getDireccion().substr(0,49).c_str());
+    strcpy(dto._telefono, cliente.getTelefono().substr(0,14).c_str());
+
     return ClienteRepositorio::agregar(dto);
 }

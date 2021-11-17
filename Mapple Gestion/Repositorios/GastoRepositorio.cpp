@@ -1,7 +1,5 @@
-#include<iostream>
-#include"GastoRepositorio.h"
-
-using namespace std;
+#include <iostream>
+#include "GastoRepositorio.h"
 
 bool GastoRepositorio::agregar(GastoDto gasto){
     FILE *file=fopen("Gastos.dat", "ab");
