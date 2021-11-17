@@ -32,14 +32,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="DTOs/ClienteDto.h" />
 		<Unit filename="DTOs/GastoDto.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="DTOs/ProductoDto.h" />
+		<Unit filename="Managers/ClienteManager.cpp" />
+		<Unit filename="Managers/ClienteManager.h" />
 		<Unit filename="Managers/GastoManager.cpp" />
 		<Unit filename="Managers/GastoManager.h" />
 		<Unit filename="Managers/ProductoManager.cpp" />
 		<Unit filename="Managers/ProductoManager.h" />
+		<Unit filename="Models/ClienteModel.cpp" />
+		<Unit filename="Models/ClienteModel.h" />
 		<Unit filename="Models/Fecha.cpp" />
 		<Unit filename="Models/Fecha.h" />
 		<Unit filename="Models/GastoModel.cpp" />
@@ -48,6 +53,8 @@
 		</Unit>
 		<Unit filename="Models/ProductoModel.cpp" />
 		<Unit filename="Models/ProductoModel.h" />
+		<Unit filename="Repositorios/ClienteRepositorio.cpp" />
+		<Unit filename="Repositorios/ClienteRepositorio.h" />
 		<Unit filename="Repositorios/GastoRepositorio.cpp" />
 		<Unit filename="Repositorios/GastoRepositorio.h" />
 		<Unit filename="Repositorios/ProductoRepositorio.cpp" />
