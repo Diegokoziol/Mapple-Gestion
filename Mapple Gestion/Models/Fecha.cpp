@@ -84,3 +84,12 @@ Fecha::diasDelMes(int mes, int anio)
             break;
     }
 }
+
+
+bool Fecha::operator<=(Fecha fecha2)
+{
+    if(_anio<=fecha2._anio && _mes<=fecha2._mes && _dia <= fecha2._anio)
+        return true;
+    else
+        return false;
+}
