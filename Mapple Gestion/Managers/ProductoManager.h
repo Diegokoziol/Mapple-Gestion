@@ -2,7 +2,7 @@
 #define PRODUCTOMANAGER_H_INCLUDED
 
 #include "../Models/ProductoModel.h"
-#include "../DTOs/ProductoDto.h"
+//#include "../DTOs/ProductoDto.h"
 
 class ProductoManager
 {
