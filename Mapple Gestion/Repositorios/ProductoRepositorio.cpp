@@ -8,6 +8,7 @@ bool ProductoRepositorio::agregar(ProductoDto producto)
     if(file==NULL) return false;
 
     bool wrote = fwrite(&producto, sizeof(ProductoDto), 1, file);
+    fclose(file);
     return wrote;
 }
 
@@ -30,6 +31,6 @@ bool ProductoRepositorio::sobreescribir(int pos, ProductoDto producto)
 
     fseek(file, sizeof(ProductoDto)*pos, SEEK_SET);
     bool wrote = fwrite(&producto, sizeof(ProductoDto), 1, file);
-
+    fclose(file);
     return wrote;
 }

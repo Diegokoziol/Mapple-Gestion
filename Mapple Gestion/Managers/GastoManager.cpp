@@ -1,48 +1,33 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 #include <cstring>
 #include <string>
 #include "../Managers/GastoManager.h"
 #include "../Models/GastoModel.h"
 #include "../DTOs/GastoDto.h"
 #include "../Repositorios/GastoRepositorio.h"
-
-
-
 using namespace std;
 
-bool GastoManager::guardarNuevo(GastoModel &gasto){/// modificar
-    vector<GastoModel> gastos = leerTodos();
-    int mayorID = 0;
-    for(int i = 0; i < gastos.size(); i++){
-        if(gastos[i].getId()> mayorID){
-            mayorID = gastos[i].getId();
-        }
-    }
-    gasto.setId(mayorID + 1);
-    gastos.push_back(gasto);
-    FILE *file = fopen("Gastos.dat", "ab");
-    if(file == NULL){
-        return false;
-    }
-    for(int i = 0; i < gastos.size(); i++){
-        fwrite(&gastos[i], sizeof(GastoModel), 1, file);
-    }
-    fclose(file);
-    return true;
-}
-   /*
-
+bool GastoManager::guardarNuevo(GastoModel &gasto){
     GastoDto dto;
+
+    int mayorID = 0, pos=0;
+    while(GastoRepositorio::leer(pos++, dto))
+    {
+        if(dto._id>mayorID)
+            mayorID=dto._id;
+    }
+    gasto.setId(mayorID+1);
+
     dto._id = gasto.getId();
-    strcpy(dto._descripcionGasto,gasto.getDescripcionGasto().c_str());
-    dto._montoUnitario = gasto.getMontoUnitario();
     dto._fecha = gasto.getFecha();
+    dto._montoUnitario = gasto.getMontoUnitario();
     dto._unidades = gasto.getUnidades();
+    strcpy(dto._descripcionGasto, gasto.getDescripcionGasto().substr(0,39).c_str());
 
     return GastoRepositorio::agregar(dto);
+}
 
-}*/
 vector <GastoModel> GastoManager::leerTodos(){
     GastoDto dto;
     vector <GastoModel> gastos;

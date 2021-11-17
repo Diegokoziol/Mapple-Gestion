@@ -4,7 +4,6 @@
 #include "../Models/ProductoModel.h"
 #include "../Repositorios/ProductoRepositorio.h"
 #include "../DTOs/ProductoDto.h"
-using namespace std;
 
 bool ProductoManager::guardarNuevo(ProductoModel &producto)
 {
@@ -16,7 +15,7 @@ bool ProductoManager::guardarNuevo(ProductoModel &producto)
 
     ProductoDto dto;
     dto._codigoProducto = producto.getCodigoProducto();
-    strcpy(dto._descripcionProducto, producto.getDescripcionProducto().c_str());
+    strcpy(dto._descripcionProducto, producto.getDescripcionProducto().substr(0,29).c_str());
     dto._precioProducto = producto.getPrecioProducto();
     dto._stockDisponible = producto.getStockDisponible();
 
