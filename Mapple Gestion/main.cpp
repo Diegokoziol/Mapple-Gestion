@@ -1,9 +1,7 @@
-#include <iostream>
-
-using namespace std;
+#include "UI/MenuPrincipal.h"
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    IniciarUI();
     return 0;
 }

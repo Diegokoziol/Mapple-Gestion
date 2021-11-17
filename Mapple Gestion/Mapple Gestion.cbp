@@ -52,6 +52,13 @@
 		<Unit filename="Repositorios/GastoRepositorio.h" />
 		<Unit filename="Repositorios/ProductoRepositorio.cpp" />
 		<Unit filename="Repositorios/ProductoRepositorio.h" />
+		<Unit filename="UI/Helpers/Productos/CargarNuevoProducto.cpp" />
+		<Unit filename="UI/Helpers/Productos/CargarNuevoProducto.h" />
+		<Unit filename="UI/MenuPrincipal.cpp" />
+		<Unit filename="UI/MenuPrincipal.h" />
+		<Unit filename="UI/MenuProductos.cpp" />
+		<Unit filename="UI/MenuProductos.h" />
+		<Unit filename="UI/rlutil.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
