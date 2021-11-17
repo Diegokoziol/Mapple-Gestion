@@ -33,6 +33,11 @@ void CargarNuevoProducto()
     cout << "INGRESE DESCRIPCIÓN DEL PRODUCTO: ";
     cin.ignore();
     getline(cin, descripcion);
+    while(descripcion.length()>29)
+    {
+        cout << "POR FAVOR, INGRESE UNA DESCRIPCIÓN MÁS BREVE: ";
+        getline(cin, descripcion);
+    }
     productoNuevo.setDescripcionProducto(descripcion);
 
     cout << endl;
