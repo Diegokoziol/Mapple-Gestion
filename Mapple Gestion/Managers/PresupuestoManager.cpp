@@ -5,7 +5,7 @@
 #include "../Repositorios/PresupuestoRepositorio.h"
 #include "../DTOs/PresupuestoDto.h"
 
-bool guardarNuevo(PresupuestoModel &presupuesto){
+bool PresupuestoManager::guardarNuevo(PresupuestoModel &presupuesto){
     PresupuestoDto dto;
     dto._id = presupuesto.getId();
     dto._fecha = presupuesto.getFecha();
