@@ -3,15 +3,15 @@
 
 #include "ProductoModel.h"
 
-class ItemPresupuetoModel{
+class ItemPresupuestoModel{
     private:
         int _id;
         int _cantidad;
         float _montoUnitario;
         ProductoModel _producto;
     public:
-        ItemPresupuetoModel();
-        ItemPresupuetoModel(ProductoModel producto, int cantidad);
+        ItemPresupuestoModel();
+        ItemPresupuestoModel(ProductoModel producto, int cantidad);
         int getId();
         int getCantidad();
         float getMontoUnitario();

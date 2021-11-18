@@ -2,7 +2,7 @@
 #include "ItemPresupuestoRepositorio.h"
 
 bool ItemPresupuestoRepositorio::agregar(ItemPresupuestoDto itemPresupuestoDto){
-    FILE *file = fopen("itemPresupuesto.dat", "ab");
+    FILE *file = fopen("ItemsPresupuestos.dat", "ab");
     if(file == NULL)  return false;
 
     bool wrote = fwrite(&itemPresupuestoDto, sizeof(ItemPresupuestoDto), 1, file);
@@ -11,7 +11,7 @@ bool ItemPresupuestoRepositorio::agregar(ItemPresupuestoDto itemPresupuestoDto){
 }
 
 bool ItemPresupuestoRepositorio::leer(int pos, ItemPresupuestoDto &itemPresupuesto){
-    FILE *file = fopen("itemPresupuesto.dat", "rb");
+    FILE *file = fopen("ItemsPresupuestos.dat", "rb");
     if(file == NULL)  return false;
 
     fseek(file, pos * sizeof(ItemPresupuestoDto), SEEK_SET);
@@ -20,7 +20,7 @@ bool ItemPresupuestoRepositorio::leer(int pos, ItemPresupuestoDto &itemPresupues
     return read;
 }
 bool ItemPresupuestoRepositorio::sobreescribir(int pos, ItemPresupuestoDto itemPresupuesto){
-    FILE *file = fopen("itemPresupuesto.dat", "rb+");
+    FILE *file = fopen("ItemsPresupuestos.dat", "rb+");
     if(file == NULL)  return false;
 
     fseek(file, pos * sizeof(ItemPresupuestoDto), SEEK_SET);

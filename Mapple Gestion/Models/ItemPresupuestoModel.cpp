@@ -4,48 +4,48 @@
 
 using namespace std;
 
-ItemPresupuetoModel::ItemPresupuetoModel(){
+ItemPresupuestoModel::ItemPresupuestoModel(){
     _id = 0;
     _cantidad = 0;
     _montoUnitario = 0;
-    _producto = ProductoModel();
-
 }
-ItemPresupuetoModel::ItemPresupuetoModel(ProductoModel producto, int cantidad){
-    _producto = producto;//----
+ItemPresupuestoModel::ItemPresupuestoModel(ProductoModel producto, int cantidad){
+    _id=0;
+    _producto = producto;
     _cantidad = cantidad;
+    _montoUnitario = producto.getPrecioProducto();
 }
-int ItemPresupuetoModel::getId(){
+int ItemPresupuestoModel::getId(){
     return _id;
 }
-int ItemPresupuetoModel::getCantidad(){
+int ItemPresupuestoModel::getCantidad(){
     return _cantidad;
 }
-float ItemPresupuetoModel::getMontoUnitario(){
+float ItemPresupuestoModel::getMontoUnitario(){
     return _montoUnitario;
 }
-float ItemPresupuetoModel::getMontoTotal(){
+float ItemPresupuestoModel::getMontoTotal(){
     return _cantidad * _montoUnitario;
 }
-ProductoModel ItemPresupuetoModel::getProducto(){
+ProductoModel ItemPresupuestoModel::getProducto(){
     return _producto;
 }
-void ItemPresupuetoModel::setId(const int id){
+void ItemPresupuestoModel::setId(const int id){
     _id = id;
 }
-void ItemPresupuetoModel::setCantidad(int cantidad){
+void ItemPresupuestoModel::setCantidad(int cantidad){
     _cantidad = cantidad;
 }
-void ItemPresupuetoModel::setMontoUnitario(float montoUnitario){
+void ItemPresupuestoModel::setMontoUnitario(float montoUnitario){
     _montoUnitario = montoUnitario;
 }
-void ItemPresupuetoModel::setProducto(ProductoModel producto){
+void ItemPresupuestoModel::setProducto(ProductoModel producto){
     _producto = producto;
 }
 
-void ItemPresupuetoModel::agregarCantidad(int cantidadAgregada){
+void ItemPresupuestoModel::agregarCantidad(int cantidadAgregada){
     _cantidad += cantidadAgregada;
 }
-void ItemPresupuetoModel::actualizarMontoUnitario(){
+void ItemPresupuestoModel::actualizarMontoUnitario(){
     _montoUnitario = _producto.getPrecioProducto();
 }
