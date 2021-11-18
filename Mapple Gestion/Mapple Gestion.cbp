@@ -37,11 +37,14 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="DTOs/ItemPresupuestoDto.h" />
+		<Unit filename="DTOs/PresupuestoDto.h" />
 		<Unit filename="DTOs/ProductoDto.h" />
 		<Unit filename="Managers/ClienteManager.cpp" />
 		<Unit filename="Managers/ClienteManager.h" />
 		<Unit filename="Managers/GastoManager.cpp" />
 		<Unit filename="Managers/GastoManager.h" />
+		<Unit filename="Managers/PresupuestoManager.cpp" />
+		<Unit filename="Managers/PresupuestoManager.h" />
 		<Unit filename="Managers/ProductoManager.cpp" />
 		<Unit filename="Managers/ProductoManager.h" />
 		<Unit filename="Models/ClienteModel.cpp" />
@@ -54,6 +57,8 @@
 		</Unit>
 		<Unit filename="Models/ItemPresupuestoModel.cpp" />
 		<Unit filename="Models/ItemPresupuestoModel.h" />
+		<Unit filename="Models/PresupuestoModel.cpp" />
+		<Unit filename="Models/PresupuestoModel.h" />
 		<Unit filename="Models/ProductoModel.cpp" />
 		<Unit filename="Models/ProductoModel.h" />
 		<Unit filename="Repositorios/ClienteRepositorio.cpp" />
@@ -62,6 +67,8 @@
 		<Unit filename="Repositorios/GastoRepositorio.h" />
 		<Unit filename="Repositorios/ItemPresupuestoRepositorio.cpp" />
 		<Unit filename="Repositorios/ItemPresupuestoRepositorio.h" />
+		<Unit filename="Repositorios/PresupuestoRepositorio.cpp" />
+		<Unit filename="Repositorios/PresupuestoRepositorio.h" />
 		<Unit filename="Repositorios/ProductoRepositorio.cpp" />
 		<Unit filename="Repositorios/ProductoRepositorio.h" />
 		<Unit filename="UI/Helpers/Productos/CargarNuevoProducto.cpp" />
