@@ -5,9 +5,7 @@
 
 PresupuestoModel::PresupuestoModel(){
     _id = 0;
-    _fecha = Fecha();
     _plazo = 0;
-    _items = vector<ItemPresupuestoModel>();
 }
 void PresupuestoModel::setId(int id){
     _id = id;
@@ -19,10 +17,20 @@ void PresupuestoModel::setPlazo(int plazo){
     _plazo = plazo;
 }
 void PresupuestoModel::agregarItem(ItemPresupuestoModel itemPresupuesto){
+    if(_items.size()>=20) return;
+
+    int id=0;
+    for(std::size_t i = 0; i < _items.size(); i++){
+        if(_items[i].getId() > id){
+            id=_items[i].getId();
+        }
+    }
+    id++;
+    itemPresupuesto.setId(id);
     _items.push_back(itemPresupuesto);
 }
 void PresupuestoModel::quitarItem(int codItem){
-    for(int i = 0; i < _items.size(); i++){
+    for(std::size_t i = 0; i < _items.size(); i++){
         if(_items[i].getProducto().getCodigoProducto() == codItem){
             _items.erase(_items.begin() + i);
         }
@@ -31,21 +39,24 @@ void PresupuestoModel::quitarItem(int codItem){
 int PresupuestoModel::getId(){
     return _id;
 }
-ItemPresupuestoModel PresupuestoModel::getItem(int pos){
-    return _items[pos];
+ItemPresupuestoModel PresupuestoModel::getItem(std::size_t pos){
+    if(pos>_items.size())
+        return ItemPresupuestoModel();
+    else
+        return _items[pos];
 }
 Fecha PresupuestoModel::getFecha(){
     return _fecha;
 }
 float PresupuestoModel::getMontoTotal(){
     float montoTotal = 0;
-    for(int i = 0; i < _items.size(); i++){
+    for(std::size_t i = 0; i < _items.size(); i++){
         montoTotal += _items[i].getMontoTotal();
     }
     return montoTotal;
 }
 bool PresupuestoModel::recalcular(){
-    for(int i = 0; i < _items.size(); i++){
+    for(std::size_t i = 0; i < _items.size(); i++){
         _items[i].actualizarMontoUnitario();
     }
     return true;
@@ -54,6 +65,11 @@ bool PresupuestoModel::vencido(){
    return true; ///REVISARR
 }
 
-int PresupuestoModel::getPlazo(){ //prueba p/ manager
+int PresupuestoModel::getPlazo(){
     return _plazo;
+}
+
+std::size_t PresupuestoModel::getCantidadItems()
+{
+    return _items.size();
 }

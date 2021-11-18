@@ -12,19 +12,19 @@ private:
     vector<ItemPresupuestoModel> _items;
 public:
     PresupuestoModel();
-    //PresupuestoModel(Fecha fecha, int plazo);
     void setId(int id);
     void setFecha(Fecha fecha);
     void setPlazo(int plazo);
     void agregarItem(ItemPresupuestoModel itemPresupuesto);
     void quitarItem(int codItem);
     int getId();
-    ItemPresupuestoModel getItem(int pos);
+    ItemPresupuestoModel getItem(std::size_t pos);
     Fecha getFecha();
     float getMontoTotal();
     bool recalcular();
     bool vencido();
-    int getPlazo(); // no se si esta bien agregado
+    int getPlazo();
+    std::size_t getCantidadItems();
 };
 
 #endif // PRESUPUESTOMODEL_H_INCLUDED
