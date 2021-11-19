@@ -28,9 +28,9 @@ bool FacturaManager::guardarNuevo(PresupuestoModel &presupuesto){
     for (size_t i=0; i<presupuesto.getCantidadItems(); i++)
     {
         ItemFacturaDto itemDto;
-        ItemFacturaModel itemModel = presupuesto.getItem(i);
+        ItemPresupuestoModel itemModel = presupuesto.getItem(i);///-----
         itemDto._id = itemModel.getId();
-        itemDto._codigoProducto = itemModel.getCodigoProducto(); ///-----
+        itemDto._codigoProducto = itemModel.getProducto().getCodigoProducto(); ///-----
         itemDto._cantidad = itemModel.getCantidad();
 
         if(!ItemFacturaRepositorio::agregar(itemDto)) return false;
@@ -47,7 +47,7 @@ bool FacturaManager::cargar(int id, FacturaModel &factura){
         if(dto._id==id){
             modelo.setId(dto._id);
             modelo.setFecha(dto._fecha);
-            modelo.setCliente(dto._DNICliente);
+            //modelo.setCliente(dto._DNICliente);
 
         }
     }
@@ -67,7 +67,7 @@ bool FacturaManager::cargar(int id, FacturaModel &factura){
 
             ProductoModel producto;
             if(ProductoManager::cargar(itemDto._codigoProducto, producto))
-                itemModelo.setDescripcionProducto(producto);
+                itemModelo.setDescripcionProducto(producto.getDescripcionProducto());///----
             else
                 return false;
 

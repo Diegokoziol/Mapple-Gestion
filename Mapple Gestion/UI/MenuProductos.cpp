@@ -34,7 +34,7 @@ void MenuProductos()
             case 3:
                 break;
             case 4:
-                VerStock();
+               // VerStock(); ///---
                 break;
             default:
                 cout << endl << endl<< " ********  OPCIÓN    INCORRECTA  ******** " << endl;
