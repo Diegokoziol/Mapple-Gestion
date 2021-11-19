@@ -88,8 +88,17 @@ Fecha::diasDelMes(int mes, int anio)
 
 bool Fecha::operator<=(Fecha fecha2)
 {
-    if(_anio<=fecha2._anio && _mes<=fecha2._mes && _dia <= fecha2._anio)
+    if(_anio<fecha2._anio)
         return true;
-    else
+    if(_anio>fecha2._anio)
         return false;
+
+    if(_mes<fecha2._mes)
+        return true;
+    if(_mes>fecha2._mes)
+        return false;
+
+    if(_dia>fecha2._anio)
+        return false;
+    return true;
 }

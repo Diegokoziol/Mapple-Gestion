@@ -24,7 +24,7 @@ public:
     bool recalcular();
     bool vencido();
     int getPlazo();
-    std::size_t getCantidadItems();
+    size_t getCantidadItems();
 };
 
 #endif // PRESUPUESTOMODEL_H_INCLUDED

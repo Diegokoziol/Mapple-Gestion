@@ -20,7 +20,7 @@ void PresupuestoModel::agregarItem(ItemPresupuestoModel itemPresupuesto){
     if(_items.size()>=20) return;
 
     int id=0;
-    for(std::size_t i = 0; i < _items.size(); i++){
+    for(size_t i = 0; i < _items.size(); i++){
         if(_items[i].getId() > id){
             id=_items[i].getId();
         }
@@ -30,7 +30,7 @@ void PresupuestoModel::agregarItem(ItemPresupuestoModel itemPresupuesto){
     _items.push_back(itemPresupuesto);
 }
 void PresupuestoModel::quitarItem(int codItem){
-    for(std::size_t i = 0; i < _items.size(); i++){
+    for(size_t i = 0; i < _items.size(); i++){
         if(_items[i].getProducto().getCodigoProducto() == codItem){
             _items.erase(_items.begin() + i);
         }
@@ -56,20 +56,20 @@ float PresupuestoModel::getMontoTotal(){
     return montoTotal;
 }
 bool PresupuestoModel::recalcular(){
-    for(std::size_t i = 0; i < _items.size(); i++){
+    for(size_t i = 0; i < _items.size(); i++){
         _items[i].actualizarMontoUnitario();
     }
     return true;
 }
 bool PresupuestoModel::vencido(){
-   return true; ///REVISARR
+    return (_fecha+_plazo) <= Fecha();
 }
 
 int PresupuestoModel::getPlazo(){
     return _plazo;
 }
 
-std::size_t PresupuestoModel::getCantidadItems()
+size_t PresupuestoModel::getCantidadItems()
 {
     return _items.size();
 }

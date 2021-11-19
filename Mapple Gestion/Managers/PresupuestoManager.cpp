@@ -30,7 +30,7 @@ bool PresupuestoManager::guardarNuevo(PresupuestoModel &presupuesto){
 
     if(!PresupuestoRepositorio::agregar(dto)) return false;
 
-    for(std::size_t i=0; i<presupuesto.getCantidadItems(); i++)
+    for(size_t i=0; i<presupuesto.getCantidadItems(); i++)
     {
         ItemPresupuestoDto itemDto;
         ItemPresupuestoModel itemModel = presupuesto.getItem(i);
@@ -98,14 +98,14 @@ bool PresupuestoManager::sobreescribir(PresupuestoModel &presupuesto){
     }
 
     pos=0;
-    bool *itemsGuardados= new bool[presupuesto.getCantidadItems()];
+    bool *itemsGuardados= new bool[presupuesto.getCantidadItems()] {};
     if(itemsGuardados==nullptr) return false;
     ItemPresupuestoDto itemDto;
     while(ItemPresupuestoRepositorio::leer(pos,itemDto))
     {
         if(itemDto._idPresupuesto==presupuesto.getId())
         {
-            for(std::size_t i=0; i<presupuesto.getCantidadItems(); i++)
+            for(size_t i=0; i<presupuesto.getCantidadItems(); i++)
             {
                 if(itemDto._id==presupuesto.getItem(i).getId())
                 {
@@ -139,7 +139,7 @@ bool PresupuestoManager::sobreescribir(PresupuestoModel &presupuesto){
         pos++;
     }
 
-    for(std::size_t i=0; i<presupuesto.getCantidadItems(); i++)
+    for(size_t i=0; i<presupuesto.getCantidadItems(); i++)
     {
         if(itemsGuardados[i]==false)
         {
