@@ -1,5 +1,6 @@
 #include "MenuProductos.h"
 #include "Helpers/Productos/CargarNuevoProducto.h"
+#include "Helpers/Productos/ModificarPrecio.h"
 #include "Helpers/Productos/VerStock.h"
 #include "rlutil.h"
 using namespace std;
@@ -22,6 +23,12 @@ void MenuProductos()
         cout <<"            0 - VOLVER AL MENU PRINCIPAL." << endl;
         cout << endl << endl << "OPCIÓN: ";
         cin >> opcion;
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore();
+            opcion=-1;
+        }
         switch(opcion)
         {
             case 0:
@@ -30,11 +37,12 @@ void MenuProductos()
                 CargarNuevoProducto();
                 break;
             case 2:
+                ModificarPrecio();
                 break;
             case 3:
                 break;
             case 4:
-               // VerStock(); ///---
+                VerStock();
                 break;
             default:
                 cout << endl << endl<< " ********  OPCIÓN    INCORRECTA  ******** " << endl;

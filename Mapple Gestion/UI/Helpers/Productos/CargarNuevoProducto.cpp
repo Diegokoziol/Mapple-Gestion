@@ -20,7 +20,7 @@ void CargarNuevoProducto()
 
     cout << "INGRESE CODIGO DEL PRODUCTO: ";
     cin >> codigo;
-    while(ProductoManager::existe(codigo) || codigo<1 || cin.fail())
+    while(cin.fail() || codigo<1 || ProductoManager::existe(codigo) )
     {
         cin.clear();
         cin.ignore();

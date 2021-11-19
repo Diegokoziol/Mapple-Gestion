@@ -48,7 +48,12 @@ void MenuPrincipal()
         cout <<"            0 - SALIR." << endl;
         cout << endl << endl << "OPCIÓN: ";
         cin >> opcion;
-
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore();
+            opcion=-1;
+        }
         switch(opcion)
         {
             case 0:
