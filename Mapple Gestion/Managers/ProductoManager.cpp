@@ -1,5 +1,6 @@
 #include <string>
 #include <cstring>
+#include <vector>
 #include "ProductoManager.h"
 #include "../Models/ProductoModel.h"
 #include "../Repositorios/ProductoRepositorio.h"
@@ -34,12 +35,8 @@ bool ProductoManager::cargar(int id, ProductoModel &producto)
         {
             //Producto encontrado, hay que llenar el modelo
             modelo.setCodigoProducto(dto._codigoProducto);
-
-            string descripcion = dto._descripcionProducto;
-            modelo.setDescripcionProducto(descripcion);
-
+            modelo.setDescripcionProducto(dto._descripcionProducto);
             modelo.setPrecioProducto(dto._precioProducto);
-
             modelo.agregarStock(dto._stockDisponible);
 
             producto=modelo;
@@ -91,4 +88,22 @@ bool ProductoManager::existe(int id)
         }
     }
     return false;
+}
+
+vector<ProductoModel> ProductoManager::leerTodos()
+{
+    vector<ProductoModel> productos;
+    ProductoDto dto;
+    int pos=0;
+    while(ProductoRepositorio::leer(pos++, dto))
+    {
+        ProductoModel modelo;
+        modelo.setCodigoProducto(dto._codigoProducto);
+        modelo.setDescripcionProducto(dto._descripcionProducto);
+        modelo.setPrecioProducto(dto._precioProducto);
+        modelo.agregarStock(dto._stockDisponible);
+        productos.push_back(modelo);
+    }
+
+    return productos;
 }

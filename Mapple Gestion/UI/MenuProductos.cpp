@@ -1,5 +1,6 @@
 #include "MenuProductos.h"
 #include "Helpers/Productos/CargarNuevoProducto.h"
+#include "Helpers/Productos/VerStock.h"
 #include "rlutil.h"
 using namespace std;
 using namespace rlutil;
@@ -33,6 +34,7 @@ void MenuProductos()
             case 3:
                 break;
             case 4:
+                VerStock();
                 break;
             default:
                 cout << endl << endl<< " ********  OPCIÓN    INCORRECTA  ******** " << endl;

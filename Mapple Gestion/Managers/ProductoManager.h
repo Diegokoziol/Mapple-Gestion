@@ -1,8 +1,8 @@
 #ifndef PRODUCTOMANAGER_H_INCLUDED
 #define PRODUCTOMANAGER_H_INCLUDED
 
+#include <vector>
 #include "../Models/ProductoModel.h"
-//#include "../DTOs/ProductoDto.h"
 
 class ProductoManager
 {
@@ -11,6 +11,7 @@ public:
     static bool cargar(int id, ProductoModel &producto);
     static bool sobreescribir(ProductoModel &producto);
     static bool existe(int id);
+    static vector<ProductoModel> leerTodos();
 };
 
 #endif // PRODUCTOMANAGER_H_INCLUDED
