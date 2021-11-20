@@ -37,6 +37,7 @@
 		<Unit filename="DTOs/GastoDto.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="DTOs/ItemBalanceDto.h" />
 		<Unit filename="DTOs/ItemFacturaDto.h" />
 		<Unit filename="DTOs/ItemPresupuestoDto.h" />
 		<Unit filename="DTOs/PresupuestoDto.h" />
@@ -69,6 +70,8 @@
 		<Unit filename="Models/PresupuestoModel.h" />
 		<Unit filename="Models/ProductoModel.cpp" />
 		<Unit filename="Models/ProductoModel.h" />
+		<Unit filename="Repositorios/BalanceRepositorio.cpp" />
+		<Unit filename="Repositorios/BalanceRepositorio.h" />
 		<Unit filename="Repositorios/ClienteRepositorio.cpp" />
 		<Unit filename="Repositorios/ClienteRepositorio.h" />
 		<Unit filename="Repositorios/FacturaRepositorio.cpp" />
