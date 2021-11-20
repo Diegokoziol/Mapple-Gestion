@@ -85,8 +85,12 @@
 		<Unit filename="Repositorios/ProductoRepositorio.h" />
 		<Unit filename="UI/Helpers/Productos/CargarNuevoProducto.cpp" />
 		<Unit filename="UI/Helpers/Productos/CargarNuevoProducto.h" />
+		<Unit filename="UI/Helpers/Productos/FuncionesComunesProducto.cpp" />
+		<Unit filename="UI/Helpers/Productos/FuncionesComunesProducto.h" />
 		<Unit filename="UI/Helpers/Productos/ModificarPrecio.cpp" />
 		<Unit filename="UI/Helpers/Productos/ModificarPrecio.h" />
+		<Unit filename="UI/Helpers/Productos/RegistrarCompraDeProducto.cpp" />
+		<Unit filename="UI/Helpers/Productos/RegistrarCompraDeProducto.h" />
 		<Unit filename="UI/Helpers/Productos/VerStock.cpp" />
 		<Unit filename="UI/Helpers/Productos/VerStock.h" />
 		<Unit filename="UI/MenuPrincipal.cpp" />

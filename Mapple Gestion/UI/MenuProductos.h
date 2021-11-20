@@ -3,5 +3,4 @@
 
 void MenuProductos();
 
-
 #endif // INTERFAZPRODUCTOS_H_INCLUDED

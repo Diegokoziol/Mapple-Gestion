@@ -1,3 +1,4 @@
+#include "FuncionesComunesProducto.h"
 #include "ModificarPrecio.h"
 #include "../../../Managers/ProductoManager.h"
 #include "../../../Models/ProductoModel.h"
@@ -23,17 +24,16 @@ void ModificarPrecio()
             float nuevoPrecio = PedirNuevoPrecio();
             producto.setPrecioProducto(nuevoPrecio);
 
-            if(ProductoManager::sobreescribir(producto))
-            {
-                cout << endl;
-                cout << "------------------------------------------------------------------" << endl;
-                cout << "               PRECIO ACTUALIZADO";
-                cout << endl;
-            }
-            else
+            while(!ProductoManager::sobreescribir(producto))
             {
                 cout << "OCURRIÓ UN PROBLEMA AL GUARDAR LOS CAMBIOS" << endl;
+                cout << "PRESIONE ESCAPE PARA SALIR U OTRA TECLA PARA REINTENTAR" << endl;
+                if(getkey()==KEY_ESCAPE) return;
             }
+            cout << endl;
+            cout << "------------------------------------------------------------------" << endl;
+            cout << "               PRECIO ACTUALIZADO";
+            cout << endl;
         }
         else
         {
@@ -42,31 +42,6 @@ void ModificarPrecio()
 
         anykey();
     }
-}
-
-int SeleccionarProducto()
-{
-
-    int codigo;
-    cout << "INGRESE CODIGO DEL PRODUCTO A MODIFICAR: ";
-    cin >> codigo;
-    while(cin.fail() || codigo<1 || !ProductoManager::existe(codigo) )
-    {
-        cin.clear();
-        cin.ignore();
-        cout << "CÓDIGO INVÁLIDO O NO EXISTENTE, INGRESE OTRO CÓDIGO O (-1) PARA CANCELAR " << endl;
-        cin >> codigo;
-        if(codigo==-1) return -1;
-    }
-
-    return codigo;
-}
-
-void MostrarDatosActuales(ProductoModel &producto)
-{
-    cout << endl;
-    cout << producto.getDescripcionProducto() << endl;
-    cout << "PRECIO ACTUAL: $" << producto.getPrecioProducto() << endl;
 }
 
 float PedirNuevoPrecio()

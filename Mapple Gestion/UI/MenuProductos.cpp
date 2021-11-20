@@ -1,6 +1,7 @@
 #include "MenuProductos.h"
 #include "Helpers/Productos/CargarNuevoProducto.h"
 #include "Helpers/Productos/ModificarPrecio.h"
+#include "Helpers/Productos/RegistrarCompraDeProducto.h"
 #include "Helpers/Productos/VerStock.h"
 #include "rlutil.h"
 using namespace std;
@@ -40,6 +41,7 @@ void MenuProductos()
                 ModificarPrecio();
                 break;
             case 3:
+                RegistrarCompraProducto();
                 break;
             case 4:
                 VerStock();
