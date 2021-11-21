@@ -98,7 +98,7 @@ bool Fecha::operator<=(Fecha fecha2)
     if(_mes>fecha2._mes)
         return false;
 
-    if(_dia>fecha2._anio)
+    if(_dia>fecha2._dia)
         return false;
     return true;
 }
