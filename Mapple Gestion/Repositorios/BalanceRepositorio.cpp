@@ -1,21 +1,16 @@
-#include<iostream>
-#include"BalanceRepositorio.h"
-#include <string>
-#include <stdio.h>
+#include "BalanceRepositorio.h"
+#include <iostream>
 #include <cstring>
-using namespace std;
 
-
-bool BalanceRepositorio::agregar(char *caracteres, int tam){
-    char c='\n';
-    size_t tamTitulo = strspn(caracteres, &c);
+bool BalanceRepositorio::agregar(const char *caracteres, int tam){
+    size_t tamTitulo = strchr(caracteres, '\n') - caracteres;
 
     char *nombreArchivo = new char[tamTitulo+5];
     if(nombreArchivo==nullptr) return false;
     strncpy (nombreArchivo,caracteres,tamTitulo);
     strcpy (nombreArchivo+tamTitulo, ".csv");
 
-    FILE *file = fopen(nombreArchivo,"ab");
+    FILE *file = fopen(nombreArchivo,"wb");
     if(file==NULL) return false;
 
     bool wrote =fwrite(caracteres, sizeof(char),tam, file);

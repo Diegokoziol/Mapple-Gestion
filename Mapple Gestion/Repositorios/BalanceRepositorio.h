@@ -5,7 +5,7 @@
 
 class BalanceRepositorio{
     public:
-        static bool agregar(char *caracteres, int tam);
+        static bool agregar(const char *caracteres, int tam);
 
 };
 
