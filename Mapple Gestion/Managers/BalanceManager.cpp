@@ -30,7 +30,7 @@ bool BalanceManager::guardarNuevo(int anio, int mes)
             {
                 for(i=0; i<items.size(); i++)
                 {
-                    if(items[i]._fecha <= dtoItemBalance._fecha)
+                    if(dtoItemBalance._fecha <= items[i]._fecha && dtoItemBalance._id < items[i]._id)
                     {
                         items.emplace(items.begin()+i, dtoItemBalance);
                         break;
