@@ -42,6 +42,8 @@
 		<Unit filename="DTOs/ItemPresupuestoDto.h" />
 		<Unit filename="DTOs/PresupuestoDto.h" />
 		<Unit filename="DTOs/ProductoDto.h" />
+		<Unit filename="Managers/BalanceManager.cpp" />
+		<Unit filename="Managers/BalanceManager.h" />
 		<Unit filename="Managers/ClienteManager.cpp" />
 		<Unit filename="Managers/ClienteManager.h" />
 		<Unit filename="Managers/FacturaManager.cpp" />
