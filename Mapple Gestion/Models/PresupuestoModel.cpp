@@ -81,7 +81,7 @@ bool PresupuestoModel::recalcular(){
 }
 
 bool PresupuestoModel::vencido(){
-    return (_fecha+_plazo) <= Fecha();
+    return !(Fecha() <= (_fecha+_plazo));
 }
 
 int PresupuestoModel::getPlazo(){
