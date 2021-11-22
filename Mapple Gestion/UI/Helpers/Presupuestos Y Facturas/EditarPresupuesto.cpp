@@ -34,6 +34,9 @@ void EditarPresupuesto(PresupuestoModel &presupuesto, const char* encabezado)
         case 3:
             modo = Modo3(presupuesto);
             break;
+        case 5:
+            modo = Modo5(presupuesto);
+            break;
         case 7:
             modo = Modo7(presupuesto);
             break;
@@ -99,7 +102,7 @@ int Modo3(PresupuestoModel &presupuesto)
 {
     showcursor();
 
-    if(presupuesto.getCantidadItems()>20)
+    if(presupuesto.getCantidadItems()>=20)
     {
         cout << "LO SENTIMOS, PERO NO SE ADMITEN MÁS DE 20 ITEMS POR PRESUPUESTO" << endl;
         anykey();
@@ -142,7 +145,12 @@ int Modo3(PresupuestoModel &presupuesto)
 
 int Modo5(PresupuestoModel &presupuesto)
 {
-
+    int cod;
+    showcursor();
+    cout << "INGRESE EL CÓDIGO DEL PRODUCTO A QUITAR" << endl;
+    EntradaNumerica(cod);
+    presupuesto.quitarItem(cod);
+    return 1;
 }
 
 int Modo7(PresupuestoModel &presupuesto)
