@@ -40,6 +40,8 @@ void EditarPresupuesto(PresupuestoModel &presupuesto, const char* encabezado)
         case 7:
             modo = Modo7(presupuesto);
             break;
+        case 9:
+            modo = Modo9(presupuesto);
         default:
             modo=1;
             break;
@@ -102,6 +104,14 @@ int Modo3(PresupuestoModel &presupuesto)
 {
     showcursor();
 
+    if(presupuesto.vencido())
+    {
+        cout << "PARA MODIFICAR EL PRESUPUESTO, DEBE ESTAR DENTRO DEL PLAZO ESTIPULADO" << endl;
+        cout << "PRESIONE ENTER PARA ACTUALIZAR EL PRESUPUESTO U OTRA TECLA PARA REGRESAR" << endl;
+        if(getkey()==KEY_ENTER) return 9;
+        else return 1;
+    }
+
     if(presupuesto.getCantidadItems()>=20)
     {
         cout << "LO SENTIMOS, PERO NO SE ADMITEN MÁS DE 20 ITEMS POR PRESUPUESTO" << endl;
@@ -145,8 +155,16 @@ int Modo3(PresupuestoModel &presupuesto)
 
 int Modo5(PresupuestoModel &presupuesto)
 {
-    int cod;
     showcursor();
+    if(presupuesto.vencido())
+    {
+        cout << "PARA MODIFICAR EL PRESUPUESTO, DEBE ESTAR DENTRO DEL PLAZO ESTIPULADO" << endl;
+        cout << "PRESIONE ENTER PARA ACTUALIZAR EL PRESUPUESTO U OTRA TECLA PARA REGRESAR" << endl;
+        if(getkey()==KEY_ENTER) return 9;
+        else return 1;
+    }
+
+    int cod;
     cout << "INGRESE EL CÓDIGO DEL PRODUCTO A QUITAR" << endl;
     EntradaNumerica(cod);
     presupuesto.quitarItem(cod);
@@ -165,6 +183,17 @@ int Modo7(PresupuestoModel &presupuesto)
     {
     case KEY_ENTER:
         guardado = false;
+        if(presupuesto.getPlazo()==0)
+        {
+            int plazo=0;
+            while(plazo<1 || plazo>90)
+            {
+                if(plazo==-1) return 1;
+                cout << "POR FAVOR, INGRESE UN PLAZO DE VALIDEZ DE ENTRE 1 Y 90 DÍAS O -1 PARA REGRESAR" << endl;
+                EntradaNumerica(plazo);
+            }
+        }
+
         while(!guardado)
         {
             if(presupuesto.getId()==0)
@@ -172,9 +201,9 @@ int Modo7(PresupuestoModel &presupuesto)
             else
                 guardado = PresupuestoManager::sobreescribir(presupuesto);
 
+            cout << endl << endl;
             if(!guardado)
             {
-                cout << endl << endl;
                 cout << "HUBO UN PROBLEMA AL GUARDAR LOS CAMBIOS" << endl;
                 cout << "PRESIONE ESCAPE PARA REGRESAR U OTRA TECLA PARA REINTENTAR" << endl;
                 if(getkey()==KEY_ESCAPE) return 1;
@@ -196,4 +225,26 @@ int Modo7(PresupuestoModel &presupuesto)
     default:
         return 7;
     }
+}
+
+int Modo9(PresupuestoModel &presupuesto)
+{
+    int plazo;
+    cout << "POR FAVOR INDIQUE EL NUEVO PLAZO (ENTRE 1 Y 90 DÍAS) O -1 PARA REGRESAR" << endl;
+    cout << "TENGA EN CUENTA QUE LA FECHA DEL PRESUPUESTO DE ACTUALIZARÁ AL DÍA DE HOY" << endl;
+    EntradaNumerica(plazo);
+
+    while(plazo<1 || plazo > 90)
+    {
+        if(plazo==-1) return 1;
+        cout << endl;
+        cout << "DEBE INGRESAR UNA CANTIDAD DE DÍAS ENTRE 1 Y 90 O -1 PARA REGRESAR" << endl;
+        cout << "TENGA EN CUENTA QUE LA FECHA DEL PRESUPUESTO DE ACTUALIZARÁ AL DÍA DE HOY" << endl;
+        EntradaNumerica(plazo);
+    }
+
+    presupuesto.recalcular();
+    presupuesto.setPlazo(plazo);
+    presupuesto.setFecha(Fecha());
+    return 1;
 }
