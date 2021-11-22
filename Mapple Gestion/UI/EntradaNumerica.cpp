@@ -10,3 +10,11 @@ void EntradaNumerica(int &n)
         cin.ignore();
     }
 }
+void EntradaNumerica(float &n)
+{
+    while(!(cin >> n))
+    {
+        cin.clear();
+        cin.ignore();
+    }
+}

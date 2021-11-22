@@ -4,6 +4,7 @@
 #include "../../../Managers/GastoManager.h"
 #include "../../../Models/GastoModel.h"
 #include "../../rlutil.h"
+#include "../../EntradaNumerica.h"
 
 using namespace std;
 using namespace rlutil;
@@ -31,8 +32,7 @@ void AgregarGasto(){
     cin >> montoUnitario;
     while(montoUnitario<=0 || cin.fail())
     {
-        cin.clear();
-        cin.ignore();
+        EntradaNumerica(montoUnitario);
         cout << "MONTO INVÁLIDO , INGRESE OTRO O (-1) PARA CANCELAR " << endl;
         if(montoUnitario==-1) return;
     }
