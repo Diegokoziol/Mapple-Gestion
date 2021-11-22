@@ -1,0 +1,6 @@
+#ifndef ENTRADANUMERICA_H_INCLUDED
+#define ENTRADANUMERICA_H_INCLUDED
+
+void EntradaNumerica(int &n);
+
+#endif // ENTRADANUMERICA_H_INCLUDED

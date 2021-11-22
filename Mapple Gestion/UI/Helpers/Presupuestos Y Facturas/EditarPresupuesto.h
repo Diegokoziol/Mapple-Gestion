@@ -16,6 +16,4 @@ int Modo7(PresupuestoModel &presupuesto);
 int Modo9(PresupuestoModel &presupuesto);
 int Modo11(PresupuestoModel &presupuesto);
 
-void EntradaNumerica(int &n);
-
 #endif // EDITARPRESUPUESTO_H_INCLUDED

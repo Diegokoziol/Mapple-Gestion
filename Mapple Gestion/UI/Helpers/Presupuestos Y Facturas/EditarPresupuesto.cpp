@@ -2,6 +2,7 @@
 #include "../../../Managers/PresupuestoManager.h"
 #include "../../../Managers/ProductoManager.h"
 #include "../../rlutil.h"
+#include "../../EntradaNumerica.h"
 #include <iomanip>
 using namespace std;
 using namespace rlutil;
@@ -17,7 +18,6 @@ void EditarPresupuesto(PresupuestoModel &presupuesto, const char* encabezado)
         cout << left << endl << endl;
         const int anchosColumnas[] = {10,35,10,20,20};
         TitulosColumnas(anchosColumnas);
-        presupuesto.agregarItem(ItemPresupuestoModel());
         for(size_t i=0; i<20; i++)
         {
             if(i<presupuesto.getCantidadItems())
@@ -33,6 +33,12 @@ void EditarPresupuesto(PresupuestoModel &presupuesto, const char* encabezado)
             break;
         case 3:
             modo = Modo3(presupuesto);
+            break;
+        case 7:
+            modo = Modo7(presupuesto);
+            break;
+        default:
+            modo=1;
             break;
         }
     }
@@ -66,15 +72,6 @@ void ImprimirItem(ItemPresupuestoModel item, const int* anchos)
     cout << setw(anchos[2]) << item.getCantidad() << '|';
     cout << setw(anchos[3]) << item.getMontoUnitario() << '|';
     cout << setw(anchos[4]) << item.getMontoTotal() << '|' << endl;
-}
-
-void EntradaNumerica(int &n)
-{
-    while(!(cin >> n))
-    {
-        cin.clear();
-        cin.ignore();
-    }
 }
 
 int Modo1()
@@ -133,4 +130,54 @@ int Modo3(PresupuestoModel &presupuesto)
     presupuesto.agregarItem(ItemPresupuestoModel(producto, cant));
 
     return 1;
+}
+
+int Modo5(PresupuestoModel &presupuesto)
+{
+
+}
+
+int Modo7(PresupuestoModel &presupuesto)
+{
+    cls();
+    cout << "¿DESEA GUARDAR LOS CAMBIOS?" << endl;
+    cout << "ENTER - GUARDAR CAMBIOS    N - DESCARTAR CAMBIOS    ESCAPE - VOLVER A EDITAR" << endl;
+    showcursor();
+
+    bool guardado;
+    switch(getkey())
+    {
+    case KEY_ENTER:
+        guardado = false;
+        while(!guardado)
+        {
+            if(presupuesto.getId()==0)
+                guardado = PresupuestoManager::guardarNuevo(presupuesto);
+            else
+                guardado = PresupuestoManager::sobreescribir(presupuesto);
+
+            if(!guardado)
+            {
+                cout << endl << endl;
+                cout << "HUBO UN PROBLEMA AL GUARDAR LOS CAMBIOS" << endl;
+                cout << "PRESIONE ESCAPE PARA REGRESAR U OTRA TECLA PARA REINTENTAR" << endl;
+                if(getkey()==KEY_ESCAPE) return 1;
+            }
+            else
+            {
+                cout << "PRESUPUESTO GUARDADO" << endl;
+                cout << "ID DEL PRESUPUESTO: " << presupuesto.getId() << endl;
+                cout << "POR FAVOR GUARDE ESTE NÚMERO PARA VOLVER A ACCEDER A ÉL" << endl;
+                anykey();
+            }
+        }
+        return 0;
+    case 'n':
+    case 'N':
+        return 0;
+    case KEY_ESCAPE:
+        return 1;
+    default:
+        return 7;
+    }
 }

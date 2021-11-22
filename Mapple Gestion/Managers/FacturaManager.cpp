@@ -69,7 +69,7 @@ bool FacturaManager::cargar(int id, FacturaModel &factura){
             else
                 return false;
 
-            factura.agregarItem(itemModelo);
+            modelo.agregarItem(itemModelo);
         }
     }
     factura = modelo;

@@ -55,7 +55,7 @@ int PresupuestoModel::getId(){
 }
 
 ItemPresupuestoModel PresupuestoModel::getItem(std::size_t pos){
-    if(pos>_items.size())
+    if(pos>=_items.size())
         return ItemPresupuestoModel();
     else
         return _items[pos];

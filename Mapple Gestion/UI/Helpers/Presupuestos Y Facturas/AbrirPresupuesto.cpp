@@ -12,7 +12,6 @@ void NuevoPresupuesto()
     cout << left;
     PresupuestoModel nuevoPresupuesto;
     EditarPresupuesto(nuevoPresupuesto, "NUEVO PRESUPUESTO");
-    anykey();
 }
 
 void AbrirPresupuesto()

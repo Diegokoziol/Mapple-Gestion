@@ -88,6 +88,8 @@
 		<Unit filename="Repositorios/PresupuestoRepositorio.h" />
 		<Unit filename="Repositorios/ProductoRepositorio.cpp" />
 		<Unit filename="Repositorios/ProductoRepositorio.h" />
+		<Unit filename="UI/EntradaNumerica.cpp" />
+		<Unit filename="UI/EntradaNumerica.h" />
 		<Unit filename="UI/Helpers/Presupuestos Y Facturas/AbrirPresupuesto.cpp" />
 		<Unit filename="UI/Helpers/Presupuestos Y Facturas/AbrirPresupuesto.h" />
 		<Unit filename="UI/Helpers/Presupuestos Y Facturas/EditarPresupuesto.cpp" />

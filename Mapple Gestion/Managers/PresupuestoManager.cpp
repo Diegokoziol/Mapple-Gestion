@@ -75,7 +75,7 @@ bool PresupuestoManager::cargar(int id, PresupuestoModel &presupuesto){
             else
                 return false;
 
-            presupuesto.agregarItem(itemModelo);
+            modelo.agregarItem(itemModelo);
         }
     }
 
