@@ -1,6 +1,7 @@
 #include "MenuPrincipal.h"
 #include "rlutil.h"
 #include "MenuProductos.h"
+#include "MenuPresupuestosYFacturas.h"
 using namespace std;
 using namespace rlutil;
 
@@ -59,8 +60,10 @@ void MenuPrincipal()
             case 0:
                 cout <<endl << endl<< endl;
                 cout << "GRACIAS POR ELEGIRNOS" << endl;
+                anykey();
                 break;
             case 1:
+                MenuPresupuestosYFacturas();
                 break;
             case 2:
                 MenuProductos();

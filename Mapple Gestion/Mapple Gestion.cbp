@@ -88,6 +88,10 @@
 		<Unit filename="Repositorios/PresupuestoRepositorio.h" />
 		<Unit filename="Repositorios/ProductoRepositorio.cpp" />
 		<Unit filename="Repositorios/ProductoRepositorio.h" />
+		<Unit filename="UI/Helpers/Presupuestos Y Facturas/AbrirPresupuesto.cpp" />
+		<Unit filename="UI/Helpers/Presupuestos Y Facturas/AbrirPresupuesto.h" />
+		<Unit filename="UI/Helpers/Presupuestos Y Facturas/EditarPresupuesto.cpp" />
+		<Unit filename="UI/Helpers/Presupuestos Y Facturas/EditarPresupuesto.h" />
 		<Unit filename="UI/Helpers/Productos/CargarNuevoProducto.cpp" />
 		<Unit filename="UI/Helpers/Productos/CargarNuevoProducto.h" />
 		<Unit filename="UI/Helpers/Productos/FuncionesComunesProducto.cpp" />
@@ -98,6 +102,8 @@
 		<Unit filename="UI/Helpers/Productos/RegistrarCompraDeProducto.h" />
 		<Unit filename="UI/Helpers/Productos/VerStock.cpp" />
 		<Unit filename="UI/Helpers/Productos/VerStock.h" />
+		<Unit filename="UI/MenuPresupuestosYFacturas.cpp" />
+		<Unit filename="UI/MenuPresupuestosYFacturas.h" />
 		<Unit filename="UI/MenuPrincipal.cpp" />
 		<Unit filename="UI/MenuPrincipal.h" />
 		<Unit filename="UI/MenuProductos.cpp" />
