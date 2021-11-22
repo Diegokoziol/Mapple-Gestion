@@ -98,6 +98,14 @@ int Modo1()
 int Modo3(PresupuestoModel &presupuesto)
 {
     showcursor();
+
+    if(presupuesto.getCantidadItems()>20)
+    {
+        cout << "LO SENTIMOS, PERO NO SE ADMITEN MÁS DE 20 ITEMS POR PRESUPUESTO" << endl;
+        anykey();
+        return 1;
+    }
+
     int cod, cant;
     cout << "CÓDIGO DE PRODUCTO: ";
     EntradaNumerica(cod);
