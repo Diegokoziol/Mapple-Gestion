@@ -27,7 +27,7 @@ void ModificarPrecio()
             while(!ProductoManager::sobreescribir(producto))
             {
                 cout << "OCURRIÓ UN PROBLEMA AL GUARDAR LOS CAMBIOS" << endl;
-                cout << "PRESIONE ESCAPE PARA SALIR U OTRA TECLA PARA REINTENTAR" << endl;
+                cout << "PRESIONE ESCAPE PARA SALIR U OTRA TECLA PARA REINTENTAR" << endl << endl;
                 if(getkey()==KEY_ESCAPE) return;
             }
             cout << endl;

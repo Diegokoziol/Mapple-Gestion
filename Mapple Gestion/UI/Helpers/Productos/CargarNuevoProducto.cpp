@@ -55,7 +55,7 @@ void CargarNuevoProducto()
     while(!ProductoManager::guardarNuevo(productoNuevo))
     {
         cout << "HUBO UN PROBLEMA AL GUARDAR" << endl;
-        cout << "PRESIONE ESCAPE PARA SALIR U OTRA TECLA PARA REINTENTAR" << endl;
+        cout << "PRESIONE ESCAPE PARA SALIR U OTRA TECLA PARA REINTENTAR" << endl << endl;
         if(getkey()==KEY_ESCAPE) return;
     }
     cout << endl;
