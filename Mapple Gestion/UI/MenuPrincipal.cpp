@@ -2,6 +2,8 @@
 #include "rlutil.h"
 #include "MenuProductos.h"
 #include "MenuPresupuestosYFacturas.h"
+#include "MenuGasto.h"
+
 using namespace std;
 using namespace rlutil;
 
@@ -69,6 +71,7 @@ void MenuPrincipal()
                 MenuProductos();
                 break;
             case 3:
+                MenuGasto();
                 break;
             case 4:
                 break;

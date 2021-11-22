@@ -1,0 +1,6 @@
+#ifndef MENUGASTO_H_INCLUDED
+#define MENUGASTO_H_INCLUDED
+
+void MenuGasto();
+
+#endif // MENUGASTO_H_INCLUDED
