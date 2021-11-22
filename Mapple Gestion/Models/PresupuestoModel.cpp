@@ -14,7 +14,8 @@ void PresupuestoModel::setFecha(Fecha fecha){
     _fecha = fecha;
 }
 void PresupuestoModel::setPlazo(int plazo){
-    _plazo = plazo;
+    if(plazo>0)
+        _plazo = plazo;
 }
 
 void PresupuestoModel::agregarItem(ItemPresupuestoModel itemPresupuesto){
