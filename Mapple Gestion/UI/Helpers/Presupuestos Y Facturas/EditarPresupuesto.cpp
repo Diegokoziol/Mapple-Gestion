@@ -326,7 +326,10 @@ bool ObtenerCliente(ClienteModel &cliente)
     }
     else
     {
-        cout << endl << "CLIENTE NO ENCONTRADO, POR FAVOR COMPLETE SUS DATOS" << endl << endl;
+        cout << endl << "CLIENTE NO ENCONTRADO ¿DESEA AGREGAR SUS DATOS?" << endl << endl;
+        cout << "PRESIONE ENTER PARA REGISTRAR UN NUEVO CLIENTE U OTRA TECLA PARA REGRESAR" << endl;
+        if(getkey()!=KEY_ENTER) return false;
+
         cout << "APELLIDO: ";
         string apellido = EntradaCadena(29);
         cout << "NOMBRE: ";
@@ -356,7 +359,6 @@ bool ObtenerCliente(ClienteModel &cliente)
 string EntradaCadena(size_t tam)
 {
     string ingreso;
-    cin.ignore();
     getline(cin, ingreso);
     while(ingreso.size()>tam || ingreso.empty())
     {
@@ -365,7 +367,6 @@ string EntradaCadena(size_t tam)
             cout << "EL TEXTO INGRESADO ES DEMASIADO LARGO Y PODRÍA PERDERSE AL GUARDAR EN DISCO" << endl;
             cout << "POR FAVOR INGRESE OTRO MÁS CORTO" << endl;
         }
-        cin.ignore();
         getline(cin, ingreso);
     }
     return ingreso;
