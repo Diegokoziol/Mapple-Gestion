@@ -3,6 +3,7 @@
 
 #include "../../../Models/PresupuestoModel.h"
 #include "../../../Models/ItemPresupuestoModel.h"
+#include "../../../Models/ClienteModel.h"
 
 void EditarPresupuesto(PresupuestoModel &presupuesto, const char* encabezado);
 void TitulosColumnas(const int* anchos);
@@ -15,5 +16,8 @@ int Modo5(PresupuestoModel &presupuesto);
 int Modo7(PresupuestoModel &presupuesto);
 int Modo9(PresupuestoModel &presupuesto);
 int Modo11(PresupuestoModel &presupuesto);
+
+bool ObtenerCliente(ClienteModel &cliente);
+string EntradaCadena(size_t tam);
 
 #endif // EDITARPRESUPUESTO_H_INCLUDED

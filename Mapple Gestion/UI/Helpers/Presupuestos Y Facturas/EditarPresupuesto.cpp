@@ -1,6 +1,7 @@
 #include "EditarPresupuesto.h"
 #include "../../../Managers/PresupuestoManager.h"
 #include "../../../Managers/ProductoManager.h"
+#include "../../../Managers/ClienteManager.h"
 #include "../../rlutil.h"
 #include "../../EntradaNumerica.h"
 #include <iomanip>
@@ -42,6 +43,10 @@ void EditarPresupuesto(PresupuestoModel &presupuesto, const char* encabezado)
             break;
         case 9:
             modo = Modo9(presupuesto);
+            break;
+        case 11:
+            modo = Modo11(presupuesto);
+            break;
         default:
             modo=1;
             break;
@@ -193,7 +198,6 @@ int Modo7(PresupuestoModel &presupuesto)
                 EntradaNumerica(plazo);
             }
         }
-
         while(!guardado)
         {
             if(presupuesto.getId()==0)
@@ -247,4 +251,122 @@ int Modo9(PresupuestoModel &presupuesto)
     presupuesto.setPlazo(plazo);
     presupuesto.setFecha(Fecha());
     return 1;
+}
+
+int Modo11(PresupuestoModel &presupuesto)
+{
+    cls();
+    cout << "¿DESEA EMITIR UNA FACTURA A PARTIR DEL PRESUPUESTO " << presupuesto.getId() << "?" << endl;
+    cout << "PRESIONE ENTER PARA CONFIRMAR O ESCAPE PARA REGRESAR" << endl;
+    switch(getkey())
+    {
+        case KEY_ENTER: break;
+        case KEY_ESCAPE: return 1;
+        default: return 11;
+    }
+
+    while(presupuesto.vencido())
+    {
+        cout << endl;
+        cout << "EL PRESUPUESTO SE ENCUENTRA FUERA DE TÉRMINO" << endl;
+        cout << endl;
+        cout << "¿DESEA ACTUALIZARLO O CONSERVAR LOS VALORES?" << endl;
+        cout << "ESPACIO - ACTUALIZAR    ENTER - CONSERVAR VALORES ACTUALES    ESCAPE - REGRESAR" << endl;
+        int key = getkey();
+        switch(key)
+        {
+            case KEY_ESCAPE: return 1;
+            case KEY_SPACE: cls(); return Modo9(presupuesto);
+        }
+        if(key==KEY_ENTER) break;
+    }
+
+    ClienteModel cliente;
+    while(!ObtenerCliente(cliente))
+    {
+        cout << "¿VOLVER A CARGAR LOS DATOS DEL CLIENTE?" << endl;
+        cout << "PRESIONE ENTER PARA REINTENTAR U OTRA TECLA PARA REGRESAR" << endl;
+        if(getkey()!=KEY_ENTER) return 1;
+    }
+
+    anykey();
+    return 1;
+}
+
+bool ObtenerCliente(ClienteModel &cliente)
+{
+    cls();
+    showcursor();
+    cout << "*** DATOS DEL CLIENTE ***" << endl << endl;
+
+    int DNI=0;
+    while(DNI<1)
+    {
+        cout << "DNI: ";
+        EntradaNumerica(DNI);
+    }
+
+    if(ClienteManager::existe(DNI))
+    {
+        if(ClienteManager::cargar(DNI, cliente))
+        {
+            cout << "NOMBRE: " << cliente.getNombre() << endl;
+            cout << "APELLIDO: " << cliente.getApellido() << endl;
+            cout << "DIRECCIÓN: " << cliente.getDireccion() << endl;
+            cout << "TELÉFONO: " << cliente.getTelefono() << endl;
+
+            cout << "PRESIONE ENTER PARA CONFIRMAR U OTRA TECLA PARA REGRESAR" << endl;
+            return getkey()==KEY_ENTER;
+        }
+        else
+        {
+            cout << "OCURRIÓ UN PROBLEMA AL CARGAR LOS DATOS DEL CLIENTE" << endl;
+            return false;
+        }
+    }
+    else
+    {
+        cout << endl << "CLIENTE NO ENCONTRADO, POR FAVOR COMPLETE SUS DATOS" << endl << endl;
+        cout << "APELLIDO: ";
+        string apellido = EntradaCadena(29);
+        cout << "NOMBRE: ";
+        string nombre = EntradaCadena(29);
+        cout << "DIRECCIÓN: ";
+        string direccion = EntradaCadena(49);
+        cout << "TELÉFONO: ";
+        string telefono = EntradaCadena(29);
+
+        cliente = ClienteModel(DNI, nombre, apellido, direccion, telefono);
+        if(ClienteManager::guardarNuevo(cliente))
+        {
+            cout << endl;
+            cout << "------------------------------------------------------------------"<<endl;
+            cout << "                 CLIENTE AGREGADO";
+            anykey();
+            return true;
+        }
+        else
+        {
+            cout << "HUBO UN PROBLEMA AL GUARDAR LOS DATOS DEL CLIENTE" << endl;
+            return false;
+        }
+    }
+}
+
+string EntradaCadena(size_t tam)
+{
+    string ingreso;
+    cin.ignore();
+    getline(cin, ingreso);
+    while(ingreso.size()>tam || ingreso.empty())
+    {
+        if(ingreso.size()>tam)
+        {
+            cout << "EL TEXTO INGRESADO ES DEMASIADO LARGO Y PODRÍA PERDERSE AL GUARDAR EN DISCO" << endl;
+            cout << "POR FAVOR INGRESE OTRO MÁS CORTO" << endl;
+        }
+        cin.ignore();
+        getline(cin, ingreso);
+    }
+    return ingreso;
 }
