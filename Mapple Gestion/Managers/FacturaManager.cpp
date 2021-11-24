@@ -11,14 +11,37 @@
 
 using namespace std;
 
-bool FacturaManager::guardarNuevo(PresupuestoModel &presupuesto, ClienteModel cliente){
+int FacturaManager::guardarNuevo(PresupuestoModel &presupuesto, ClienteModel cliente){
+    vector<ProductoModel> inventarioActualizado;
+    for(size_t i=0; i<presupuesto.getCantidadItems(); i++)
+    {
+        ItemPresupuestoModel item = presupuesto.getItem(i);
+        ProductoModel producto = item.getProducto();
+        if(producto.getStockDisponible() >= item.getCantidad())
+        {
+            producto.agregarStock(-1*item.getCantidad());
+            inventarioActualizado.push_back(producto);
+        }
+        else
+        {
+            return false;
+        }
+    }
+    for(size_t i=0; i<inventarioActualizado.size(); i++)
+    {
+        if(!ProductoManager::sobreescribir(inventarioActualizado[i]))
+            return false;
+    }
+
     FacturaDto dto;
+
     int mayorId=0;
     int pos=0;
     while(FacturaRepositorio::leer(pos++, dto)){
         if(dto._id>mayorId) mayorId=dto._id;
     }
     dto._id = mayorId + 1;
+
     dto._DNICliente = cliente.getDNI();
 
     if(!FacturaRepositorio::agregar(dto)) return false;
@@ -27,14 +50,14 @@ bool FacturaManager::guardarNuevo(PresupuestoModel &presupuesto, ClienteModel cl
         ItemFacturaDto itemDto;
         ItemPresupuestoModel itemModel = presupuesto.getItem(i);
         itemDto._id = itemModel.getId();
-        itemDto._codigoProducto = itemModel.getProducto().getCodigoProducto(); ///-----
+        itemDto._codigoProducto = itemModel.getProducto().getCodigoProducto();
         itemDto._cantidad = itemModel.getCantidad();
         itemDto._montoUnitario = itemModel.getMontoUnitario();
         itemDto._idFactura = dto._id;
 
         if(!ItemFacturaRepositorio::agregar(itemDto)) return false;
     }
-    return true;
+    return dto._id;
 }
 
 bool FacturaManager::cargar(int id, FacturaModel &factura){

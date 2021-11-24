@@ -7,7 +7,7 @@
 
 class FacturaManager{
     public:
-        static bool guardarNuevo(PresupuestoModel &presupuesto, ClienteModel cliente);
+        static int guardarNuevo(PresupuestoModel &presupuesto, ClienteModel cliente);
         static bool cargar(int id, FacturaModel &factura);
 };
 

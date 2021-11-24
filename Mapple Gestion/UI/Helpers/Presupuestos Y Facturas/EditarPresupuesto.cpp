@@ -2,6 +2,7 @@
 #include "../../../Managers/PresupuestoManager.h"
 #include "../../../Managers/ProductoManager.h"
 #include "../../../Managers/ClienteManager.h"
+#include "../../../Managers/FacturaManager.h"
 #include "../../rlutil.h"
 #include "../../EntradaNumerica.h"
 #include <iomanip>
@@ -265,6 +266,19 @@ int Modo11(PresupuestoModel &presupuesto)
         default: return 11;
     }
 
+    for(size_t i=0; i<presupuesto.getCantidadItems(); i++)
+    {
+        ItemPresupuestoModel item = presupuesto.getItem(i);
+        ProductoModel producto = item.getProducto();
+        if(producto.getStockDisponible() < item.getCantidad())
+        {
+            cout << endl << "NO HAY SUFICIENTE STOCK DISPONIBLE DEL PRODUCTO ";
+            cout << producto.getCodigoProducto() << " - " << producto.getDescripcionProducto() << endl;
+            anykey();
+            return 1;
+        }
+    }
+
     while(presupuesto.vencido())
     {
         cout << endl;
@@ -287,6 +301,20 @@ int Modo11(PresupuestoModel &presupuesto)
         cout << "¿VOLVER A CARGAR LOS DATOS DEL CLIENTE?" << endl;
         cout << "PRESIONE ENTER PARA REINTENTAR U OTRA TECLA PARA REGRESAR" << endl;
         if(getkey()!=KEY_ENTER) return 1;
+    }
+
+    int idFactura = FacturaManager::guardarNuevo(presupuesto, cliente);
+    if(idFactura)
+    {
+        cout << endl;
+        cout << "------------------------------------------------------------------" << endl;
+        cout << "                      FACTURA GUARDADA" << endl;
+        cout << "ID DE LA FACTURA: " << idFactura << endl;
+        cout << "POR FAVOR, GUARDE ESTE NÚMERO PARA ACCEDER A ELLA MÁS TARDE" << endl;
+    }
+    else
+    {
+        cout << "LO SENTIMOS, ALGO SALIÓ MAL AL REALIZAR LA OPERACIÓN" << endl;
     }
 
     anykey();
@@ -327,7 +355,7 @@ bool ObtenerCliente(ClienteModel &cliente)
     else
     {
         cout << endl << "CLIENTE NO ENCONTRADO ¿DESEA AGREGAR SUS DATOS?" << endl << endl;
-        cout << "PRESIONE ENTER PARA REGISTRAR UN NUEVO CLIENTE U OTRA TECLA PARA REGRESAR" << endl;
+        cout << "PRESIONE ENTER PARA REGISTRAR UN NUEVO CLIENTE U OTRA TECLA PARA REGRESAR" << endl << endl;
         if(getkey()!=KEY_ENTER) return false;
 
         cout << "APELLIDO: ";
