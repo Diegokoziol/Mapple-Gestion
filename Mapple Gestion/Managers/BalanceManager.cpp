@@ -24,13 +24,13 @@ bool BalanceManager::guardarNuevo(int anio, int mes)
             dtoItemBalance._monto=0;
             dtoItemBalance._tipo=1;
 
-            //INSERTAR POR ORDEN DE FECHA, LUEGO ID
+            //INSERTAR POR ORDEN DE FECHA
             size_t i=0;
             if(!items.empty())
             {
                 for(i=0; i<items.size(); i++)
                 {
-                    if(dtoItemBalance._fecha <= items[i]._fecha && dtoItemBalance._id < items[i]._id)
+                    if(dtoItemBalance._fecha <= items[i]._fecha)
                     {
                         items.emplace(items.begin()+i, dtoItemBalance);
                         break;
@@ -76,7 +76,7 @@ bool BalanceManager::guardarNuevo(int anio, int mes)
             {
                 for(i=0; i<items.size(); i++)
                 {
-                    if(dtoItemBalance._fecha <= items[i]._fecha && dtoItemBalance._id < items[i]._id)
+                    if(dtoItemBalance._fecha <= items[i]._fecha)
                     {
                         items.emplace(items.begin()+i, dtoItemBalance);
                         break;
