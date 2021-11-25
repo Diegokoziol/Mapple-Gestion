@@ -278,6 +278,13 @@ int Modo11(PresupuestoModel &presupuesto)
         default: return 11;
     }
 
+    if(presupuesto.getCantidadItems()==0)
+    {
+        cout << "NO HAY ITEMS PARA FACTURAR" << endl;
+        anykey();
+        return 1;
+    }
+
     for(size_t i=0; i<presupuesto.getCantidadItems(); i++)
     {
         ItemPresupuestoModel item = presupuesto.getItem(i);
