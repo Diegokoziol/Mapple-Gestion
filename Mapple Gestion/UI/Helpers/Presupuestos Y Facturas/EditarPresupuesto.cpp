@@ -28,6 +28,16 @@ void EditarPresupuesto(PresupuestoModel &presupuesto, const char* encabezado)
                 ImprimirItemVacio(anchosColumnas);
         }
 
+        if(presupuesto.getPlazo()!=0)
+        {
+            string msjVencido;
+            if(presupuesto.vencido())
+                msjVencido = "PRESUPUESTO FUERA DE TÉRMINO";
+            else
+                msjVencido = "VENCIMIENTO DEL PLAZO: " + (presupuesto.getFecha()+presupuesto.getPlazo()).getStrFecha();
+            cout << right << setw(100) << msjVencido << endl << endl;
+        }
+
         switch(modo)
         {
         case 1:
@@ -198,6 +208,7 @@ int Modo7(PresupuestoModel &presupuesto)
                 cout << "POR FAVOR, INGRESE UN PLAZO DE VALIDEZ DE ENTRE 1 Y 90 DÍAS O -1 PARA REGRESAR" << endl;
                 EntradaNumerica(plazo);
             }
+            presupuesto.setPlazo(plazo);
         }
         while(!guardado)
         {
