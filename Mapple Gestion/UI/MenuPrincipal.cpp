@@ -12,6 +12,8 @@ void IniciarUI()
     setlocale(LC_ALL, "spanish");
     setColor(WHITE);
     setBackgroundColor(BLUE);
+    cout.precision(2);
+    cout << fixed;
     Bienvenida();
 }
 
