@@ -98,6 +98,8 @@
 		<Unit filename="UI/Helpers/Presupuestos Y Facturas/AbrirPresupuesto.h" />
 		<Unit filename="UI/Helpers/Presupuestos Y Facturas/EditarPresupuesto.cpp" />
 		<Unit filename="UI/Helpers/Presupuestos Y Facturas/EditarPresupuesto.h" />
+		<Unit filename="UI/Helpers/Presupuestos Y Facturas/VerFactura.cpp" />
+		<Unit filename="UI/Helpers/Presupuestos Y Facturas/VerFactura.h" />
 		<Unit filename="UI/Helpers/Productos/CargarNuevoProducto.cpp" />
 		<Unit filename="UI/Helpers/Productos/CargarNuevoProducto.h" />
 		<Unit filename="UI/Helpers/Productos/FuncionesComunesProducto.cpp" />

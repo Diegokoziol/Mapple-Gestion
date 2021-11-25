@@ -1,5 +1,6 @@
 #include "MenuPresupuestosYFacturas.h"
 #include "Helpers/Presupuestos Y Facturas/AbrirPresupuesto.h"
+#include "Helpers/Presupuestos Y Facturas/VerFactura.h"
 #include "rlutil.h"
 using namespace std;
 using namespace rlutil;
@@ -37,6 +38,7 @@ void MenuPresupuestosYFacturas()
                 AbrirPresupuesto();
                 break;
             case 3:
+                VerFactura();
                 break;
             default:
                 cout << endl << endl<< " ********  OPCIÓN    INCORRECTA  ******** " << endl;

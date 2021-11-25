@@ -257,7 +257,7 @@ int Modo9(PresupuestoModel &presupuesto)
 int Modo11(PresupuestoModel &presupuesto)
 {
     cls();
-    cout << "¿DESEA EMITIR UNA FACTURA A PARTIR DEL PRESUPUESTO " << presupuesto.getId() << "?" << endl;
+    cout << "¿DESEA EMITIR UNA FACTURA A PARTIR DEL PRESUPUESTO N°:  " << presupuesto.getId() << "?" << endl;
     cout << "PRESIONE ENTER PARA CONFIRMAR O ESCAPE PARA REGRESAR" << endl;
     switch(getkey())
     {

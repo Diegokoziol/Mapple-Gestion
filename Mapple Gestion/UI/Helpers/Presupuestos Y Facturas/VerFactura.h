@@ -1,0 +1,7 @@
+#ifndef VERFACTURA_H_INCLUDED
+#define VERFACTURA_H_INCLUDED
+
+void VerFactura();
+
+
+#endif // VERFACTURA_H_INCLUDED
