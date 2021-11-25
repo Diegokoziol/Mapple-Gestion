@@ -28,15 +28,16 @@ void EditarPresupuesto(PresupuestoModel &presupuesto, const char* encabezado)
                 ImprimirItemVacio(anchosColumnas);
         }
 
+        string msjVencido;
         if(presupuesto.getPlazo()!=0)
         {
-            string msjVencido;
             if(presupuesto.vencido())
                 msjVencido = "PRESUPUESTO FUERA DE TÉRMINO";
             else
                 msjVencido = "VENCIMIENTO DEL PLAZO: " + (presupuesto.getFecha()+presupuesto.getPlazo()).getStrFecha();
-            cout << right << setw(100) << msjVencido << endl << endl;
+            cout << msjVencido;
         }
+        cout << right << setw(100-msjVencido.size()) << presupuesto.getMontoTotal() << endl << endl;
 
         switch(modo)
         {
@@ -156,7 +157,7 @@ int Modo3(PresupuestoModel &presupuesto)
 
     cout << producto.getDescripcionProducto() << endl;
 
-    cout << "INGRESE CANTIDAD: " << endl;
+    cout << "INGRESE CANTIDAD: ";
     EntradaNumerica(cant);
     while(cant<1)
     {
@@ -328,7 +329,12 @@ int Modo11(PresupuestoModel &presupuesto)
         cout << "LO SENTIMOS, ALGO SALIÓ MAL AL REALIZAR LA OPERACIÓN" << endl;
     }
 
-    anykey();
+    cout << endl << endl << "EL PRESUPUESTO NECESITA VOLVER A CARGARSE" << endl;
+    cout << "PRESIONE ENTER PARA GUARDARLO PRIMERO U OTRA TECLA PARA CONTINUAR SIN GUARDAR" << endl;
+    if(getkey()==KEY_ENTER)
+        PresupuestoManager::sobreescribir(presupuesto);
+    PresupuestoManager::cargar(presupuesto.getId(), presupuesto);
+
     return 1;
 }
 
