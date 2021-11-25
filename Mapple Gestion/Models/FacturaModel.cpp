@@ -43,3 +43,8 @@ float FacturaModel::getMontoTotal(){
 void FacturaModel::agregarItem(ItemFacturaModel itemFactura){
     _items.push_back(itemFactura);
 }
+
+size_t FacturaModel::getCantidadItems()
+{
+    return _items.size();
+}

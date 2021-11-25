@@ -22,6 +22,7 @@ class FacturaModel{
         ItemFacturaModel getItem(int pos);
         float getMontoTotal();
         void agregarItem(ItemFacturaModel itemFactura);
+        size_t getCantidadItems();
 };
 
 #endif // FACTURAMODEL_H_INCLUDED
