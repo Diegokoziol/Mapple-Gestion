@@ -6,9 +6,7 @@
 #include "../../../Models/ClienteModel.h"
 
 void EditarPresupuesto(PresupuestoModel &presupuesto, const char* encabezado);
-void TitulosColumnas(const int* anchos);
 void ImprimirItem(ItemPresupuestoModel item, const int* anchos);
-void ImprimirItemVacio(const int* anchos);
 
 int Modo1();
 int Modo3(PresupuestoModel &presupuesto);

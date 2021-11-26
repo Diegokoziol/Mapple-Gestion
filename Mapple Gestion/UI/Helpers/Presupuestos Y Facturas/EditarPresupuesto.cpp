@@ -1,4 +1,5 @@
 #include "EditarPresupuesto.h"
+#include "GenericoPresupuestoYFactura.h"
 #include "../../../Managers/PresupuestoManager.h"
 #include "../../../Managers/ProductoManager.h"
 #include "../../../Managers/ClienteManager.h"
@@ -64,27 +65,6 @@ void EditarPresupuesto(PresupuestoModel &presupuesto, const char* encabezado)
             break;
         }
     }
-}
-
-void TitulosColumnas(const int* anchos)
-{
-    cout << setw(anchos[0]) << "CÓDIGO" << '|';
-    cout << setw(anchos[1]) << "DESCRIPCIÓN" << '|';
-    cout << setw(anchos[2]) << "CANTIDAD" << '|';
-    cout << setw(anchos[3]) << "PRECIO UNITARIO" << '|';
-    cout << setw(anchos[4]) << "TOTAL" << '|' << endl;
-
-    for(int i=0; i<100; i++) cout << "~";
-    cout << endl;
-}
-
-void ImprimirItemVacio(const int* anchos)
-{
-    cout << setw(anchos[0]) << "" << '|';
-    cout << setw(anchos[1]) << "" << '|';
-    cout << setw(anchos[2]) << "" << '|';
-    cout << setw(anchos[3]) << "" << '|';
-    cout << setw(anchos[4]) << "" << '|' << endl;
 }
 
 void ImprimirItem(ItemPresupuestoModel item, const int* anchos)

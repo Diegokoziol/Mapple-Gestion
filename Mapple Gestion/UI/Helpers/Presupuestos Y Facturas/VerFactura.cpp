@@ -5,6 +5,7 @@
 #include "../../rlutil.h"
 #include "../../EntradaNumerica.h"
 #include "VerFactura.h"
+#include "GenericoPresupuestoYFactura.h"
 using namespace std;
 using namespace rlutil;
 
