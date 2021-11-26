@@ -1,5 +1,6 @@
-#include<iostream>
+#include <iostream>
 #include "rlutil.h"
+#include "EntradaNumerica.h"
 #include "MenuGasto.h"
 #include "Helpers/Gastos/AgregarGasto.h"
 #include "Helpers/Gastos/MostrarGastos.h"
@@ -20,13 +21,7 @@ void MenuGasto(){
         cout <<"            0 - VOLVER AL MENU PRINCIPAL." << endl;
         cout << endl << endl << "OPCIÓN: ";
 
-        cin >> opcion;
-        if(cin.fail())
-        {
-            cin.clear();
-            cin.ignore();
-            opcion=-1;
-        }
+        EntradaNumerica(opcion);
         switch(opcion){
                     case 0:
                         break;

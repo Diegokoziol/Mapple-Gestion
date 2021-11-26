@@ -1,5 +1,6 @@
 #include "MenuPrincipal.h"
 #include "rlutil.h"
+#include "EntradaNumerica.h"
 #include "MenuProductos.h"
 #include "MenuPresupuestosYFacturas.h"
 #include "MenuGasto.h"
@@ -52,13 +53,7 @@ void MenuPrincipal()
         cout <<"------------------------------------------------------------------ "<< endl;
         cout <<"            0 - SALIR." << endl;
         cout << endl << endl << "OPCIÓN: ";
-        cin >> opcion;
-        if(cin.fail())
-        {
-            cin.clear();
-            cin.ignore();
-            opcion=-1;
-        }
+        EntradaNumerica(opcion);
         switch(opcion)
         {
             case 0:

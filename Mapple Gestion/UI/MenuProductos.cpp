@@ -4,6 +4,7 @@
 #include "Helpers/Productos/RegistrarCompraDeProducto.h"
 #include "Helpers/Productos/VerStock.h"
 #include "rlutil.h"
+#include "EntradaNumerica.h"
 using namespace std;
 using namespace rlutil;
 
@@ -23,13 +24,7 @@ void MenuProductos()
         cout <<"------------------------------------------------------------------ "<< endl<< endl;
         cout <<"            0 - VOLVER AL MENU PRINCIPAL." << endl;
         cout << endl << endl << "OPCIÓN: ";
-        cin >> opcion;
-        if(cin.fail())
-        {
-            cin.clear();
-            cin.ignore();
-            opcion=-1;
-        }
+        EntradaNumerica(opcion);
         switch(opcion)
         {
             case 0:
