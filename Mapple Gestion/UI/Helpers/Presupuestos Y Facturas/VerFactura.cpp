@@ -31,6 +31,7 @@ void VerFactura(){
             ImprimirItemVacio(anchosColumnas);
     }
 
+    cout << right << setw(99) << factura.getMontoTotal() << endl;
     anykey();
 
 }
