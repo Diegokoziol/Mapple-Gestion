@@ -5,6 +5,7 @@
 #include "../../../Models/GastoModel.h"
 #include "../../rlutil.h"
 #include "../../EntradaNumerica.h"
+#include "../../EntradaCadena.h"
 
 using namespace std;
 using namespace rlutil;
@@ -19,36 +20,32 @@ void AgregarGasto(){
     int unidades;
 
     cout<<"INGRESE DESCRIPCIÓN DEL GASTO: ";
-    cin.ignore();
-    getline(cin, descripcioGasto);
-    while(descripcioGasto.length()>29)
-    {
-        cout << "POR FAVOR, INGRESE UNA DESCRIPCIÓN MÁS BREVE: ";
-        getline(cin, descripcioGasto);
-    }
+    descripcioGasto = EntradaCadena(29);
     GastoNuevo.setDescripcionGasto(descripcioGasto);
 
     cout<<"INGRESE PRECIO UNITARIO DEL GASTO: $";
-    cin >> montoUnitario;
-    while(montoUnitario<=0 || cin.fail())
+     EntradaNumerica(montoUnitario);
+    while(montoUnitario<=0)
     {
-        EntradaNumerica(montoUnitario);
+
         cout << "MONTO INVÁLIDO , INGRESE OTRO O (-1) PARA CANCELAR " << endl;
+        EntradaNumerica(montoUnitario);
         if(montoUnitario==-1) return;
+
     }
     GastoNuevo.setMontoUnitario(montoUnitario);
 
 
 
     cout<<"INGRESE CANTIDAD DE UNIDADES: ";
-    cin>>unidades;
+    EntradaNumerica(unidades);
 
-     while(unidades<=0 || cin.fail())
+     while(unidades<=0)
     {
-        cin.clear();
-        cin.ignore();
         cout << "CANTIDAD INVÁLIDO , INGRESE OTRA O (-1) PARA CANCELAR " << endl;
+        EntradaNumerica(unidades);
         if(unidades==-1) return;
+
     }
     GastoNuevo.setUnidades(unidades);
 
