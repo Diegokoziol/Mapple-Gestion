@@ -16,6 +16,5 @@ int Modo9(PresupuestoModel &presupuesto);
 int Modo11(PresupuestoModel &presupuesto);
 
 bool ObtenerCliente(ClienteModel &cliente);
-string EntradaCadena(size_t tam);
 
 #endif // EDITARPRESUPUESTO_H_INCLUDED
