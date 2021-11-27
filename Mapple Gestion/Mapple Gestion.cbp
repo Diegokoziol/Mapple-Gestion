@@ -92,6 +92,8 @@
 		<Unit filename="UI/EntradaCadena.h" />
 		<Unit filename="UI/EntradaNumerica.cpp" />
 		<Unit filename="UI/EntradaNumerica.h" />
+		<Unit filename="UI/Helpers/Balances/GenerarBalance.cpp" />
+		<Unit filename="UI/Helpers/Balances/GenerarBalance.h" />
 		<Unit filename="UI/Helpers/Gastos/AgregarGasto.cpp" />
 		<Unit filename="UI/Helpers/Gastos/AgregarGasto.h" />
 		<Unit filename="UI/Helpers/Gastos/MostrarGastos.cpp" />
