@@ -33,11 +33,9 @@ void AbrirPresupuesto()
     {
         cout << "NO SE PUDO ABRIR EL PRESUPUESTO SOLICITADO" << endl;
         cout << "PRESIONE ESCAPE PARA SALIR U OTRA TECLA PARA REINTENTAR" << endl << endl;
-        EntradaNumerica(id);
         if(getkey()==KEY_ESCAPE) return;
-
-
     }
+
     string encabezado= "PRESUPUESTO " + to_string(presupuesto.getId());
     EditarPresupuesto(presupuesto, encabezado.c_str());
 }
