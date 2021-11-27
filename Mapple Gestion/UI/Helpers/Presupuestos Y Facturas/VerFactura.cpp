@@ -16,9 +16,9 @@ void VerFactura(){
     cls();
     const int anchosColumnas[] = {10,35,10,20,20};
 
-    string encabezado= "FACTURA " + to_string(factura.getId());
+    string encabezado= " FACTURA N°: " + to_string(factura.getId());
     cout << left << encabezado;
-    cout << right << setw(100-encabezado.size()) << factura.getFecha().getStrFecha() << endl;
+    cout << right << setw(91-encabezado.size()) <<"FECHA: "<< factura.getFecha().getStrFecha() << endl;
     cout << left;
     MostrarDatosCliente(factura.getCliente());
     cout << endl;
@@ -32,7 +32,7 @@ void VerFactura(){
             ImprimirItemVacio(anchosColumnas);
     }
 
-    cout << right << setw(99) << factura.getMontoTotal() << endl;
+    cout << endl << right << setw(90) <<"PRECIO TOTAL: $ "<< factura.getMontoTotal() << endl;
     anykey();
 
 }
@@ -72,7 +72,22 @@ void ImprimirItem(ItemFacturaModel item, const int* anchos)
 
 void MostrarDatosCliente(ClienteModel cliente)
 {
+    /* cout << endl;
     cout << cliente.getNombre() << " " << cliente.getApellido() << " - " ;
     cout << "DNI N°"  << cliente.getDNI() << " - " ;
-    cout << cliente.getDireccion() << " - TELÉFONO: " << cliente.getTelefono() << endl;
+    cout << cliente.getDireccion() << " - TELÉFONO: " << cliente.getTelefono() << endl;*/
+
+    cout << endl;
+    cout <<" FIBROFIX S.A"<< endl;
+    cout <<" www.fibrofix.com.ar "<< endl;
+    cout <<endl << endl;
+    cout << " FACTURAR A: "<< endl;
+    cout << " Nombre y Apellido: " <<cliente.getNombre() << " " << cliente.getApellido() << endl;
+    cout << " DNI: " << cliente.getDNI() <<endl;
+    cout << " Dirección: " << cliente.getDireccion() << endl;
+    cout << " Teléfono: "  << cliente.getTelefono() << endl;
+
+    /// ELegir cual conviene mostrar
+
+
 }
