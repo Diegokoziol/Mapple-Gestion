@@ -2,6 +2,7 @@
 #include "ModificarPrecio.h"
 #include "../../../Managers/ProductoManager.h"
 #include "../../../Models/ProductoModel.h"
+#include "../../EntradaNumerica.h"
 #include "../../rlutil.h"
 #include <string>
 using namespace std;
@@ -49,13 +50,12 @@ float PedirNuevoPrecio()
     float precio;
     cout << endl;
     cout << "INGRESE NUEVO PRECIO DEL PRODUCTO: $" ;
-    cin >> precio;
-    while(cin.fail() || precio<0)
+    EntradaNumerica(precio);
+    while(precio<0)
     {
-        cin.clear();
-        cin.ignore();
+
         cout << "EL MONTO INGRESADO NO ES VÁLIDO" << endl;
-        cin >> precio;
+        EntradaNumerica(precio);
     }
     return precio;
 }

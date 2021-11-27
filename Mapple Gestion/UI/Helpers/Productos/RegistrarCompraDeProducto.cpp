@@ -4,6 +4,7 @@
 #include "../../../Managers/ProductoManager.h"
 #include "../../../Managers/GastoManager.h"
 #include "../../rlutil.h"
+#include "../../EntradaNumerica.h"
 #include <string>
 using namespace std;
 using namespace rlutil;
@@ -60,13 +61,12 @@ int PedirCantidad()
 {
     int cantidad;
     cout << endl << "INGRESE LA CANTIDAD DE UNIDADES COMPRADAS: " << endl;
-    cin >> cantidad;
-    while(cin.fail() || cantidad<1)
+    EntradaNumerica(cantidad);
+    while(cantidad<1)
     {
-        cin.clear();
-        cin.ignore();
+
         cout << "LA CANTIDAD INGRESADA NO ES VÁLIDA, INGRESE NUEVAMENTE" << endl;
-        cin >> cantidad;
+        EntradaNumerica(cantidad);
     }
     return cantidad;
 }
@@ -76,13 +76,12 @@ float PedirPrecioUnitario()
     float precio;
     cout << endl;
     cout << "INGRESE EL PRECIO POR UNIDAD DE LA COMPRA: $" ;
-    cin >> precio;
-    while(cin.fail() || precio<=0)
+    EntradaNumerica(precio);
+    while( precio<=0)
     {
-        cin.clear();
-        cin.ignore();
+
         cout << "EL MONTO INGRESADO NO ES VÁLIDO, POR FAVOR, INGRESE NUEVAMENTE" << endl;
-        cin >> precio;
+        EntradaNumerica(precio);
     }
     return precio;
 }
