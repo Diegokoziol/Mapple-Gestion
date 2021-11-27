@@ -4,6 +4,7 @@
 #include "MenuProductos.h"
 #include "MenuPresupuestosYFacturas.h"
 #include "MenuGasto.h"
+#include "Helpers/Balances/GenerarBalance.h"
 
 using namespace std;
 using namespace rlutil;
@@ -71,6 +72,7 @@ void MenuPrincipal()
                 MenuGasto();
                 break;
             case 4:
+                GenerarBalance();
                 break;
             default:
                 cout << endl << endl << " ********  OPCIÓN    INCORRECTA  ******** " << endl;
