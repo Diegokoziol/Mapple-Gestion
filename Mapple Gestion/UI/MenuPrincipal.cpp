@@ -5,13 +5,15 @@
 #include "MenuPresupuestosYFacturas.h"
 #include "MenuGasto.h"
 #include "Helpers/Balances/GenerarBalance.h"
-
+#include <locale.h>///
 using namespace std;
 using namespace rlutil;
 
 void IniciarUI()
 {
-    setlocale(LC_ALL, "spanish");
+    setlocale(LC_ALL, "spanish"); // Cambiar locale - Suficiente para máquinas Linux
+    SetConsoleCP(1252); // Cambiar STDIN -  Para máquinas Windows
+    SetConsoleOutputCP(1252); // Cambiar STDOUT - Para máquinas Windows
     setColor(WHITE);
     setBackgroundColor(BLUE);
     cout.precision(2);
