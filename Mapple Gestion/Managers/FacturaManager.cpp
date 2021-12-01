@@ -41,7 +41,7 @@ int FacturaManager::guardarNuevo(PresupuestoModel &presupuesto, ClienteModel cli
         if(dto._id>mayorId) mayorId=dto._id;
     }
     dto._id = mayorId + 1;
-
+    dto._fecha = Fecha();
     dto._DNICliente = cliente.getDNI();
 
     if(!FacturaRepositorio::agregar(dto)) return false;
