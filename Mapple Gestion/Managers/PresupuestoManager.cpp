@@ -105,6 +105,7 @@ bool PresupuestoManager::sobreescribir(PresupuestoModel &presupuesto){
     {
         if(itemDto._idPresupuesto==presupuesto.getId())
         {
+            bool darDeBaja=true;
             for(size_t i=0; i<presupuesto.getCantidadItems(); i++)
             {
                 if(itemDto._id==presupuesto.getItem(i).getId())
@@ -122,11 +123,11 @@ bool PresupuestoManager::sobreescribir(PresupuestoModel &presupuesto){
                         return false;
                     }
                     itemsGuardados[i]=true;
+                    darDeBaja=false;
                     break;
                 }
-                if(itemsGuardados[i]==false)
+                if(darDeBaja)
                 {
-                    //BAJA LÓGICA
                     itemDto._estado=false;
                     if(!ItemPresupuestoRepositorio::sobreescribir(pos, itemDto))
                     {
