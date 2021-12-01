@@ -126,14 +126,14 @@ bool PresupuestoManager::sobreescribir(PresupuestoModel &presupuesto){
                     darDeBaja=false;
                     break;
                 }
-                if(darDeBaja)
+            }
+            if(darDeBaja)
+            {
+                itemDto._estado=false;
+                if(!ItemPresupuestoRepositorio::sobreescribir(pos, itemDto))
                 {
-                    itemDto._estado=false;
-                    if(!ItemPresupuestoRepositorio::sobreescribir(pos, itemDto))
-                    {
-                        delete itemsGuardados;
-                        return false;
-                    }
+                    delete itemsGuardados;
+                    return false;
                 }
             }
         }
