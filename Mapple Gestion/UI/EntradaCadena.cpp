@@ -13,5 +13,6 @@ string EntradaCadena(size_t tam)
         }
         getline(cin, ingreso);
     }
+    cout << ingreso << endl;
     return ingreso;
 }
