@@ -16,7 +16,7 @@ void MenuGasto(){
         cout <<"                        GASTOS " <<endl<<endl;
         cout <<"------------------------------------------------------------------ "<< endl<< endl;
         cout <<"            1 - CARGAR NUEVO GASTO" << endl<< endl;
-        cout <<"            2 - VER GASTO REALIZADO" << endl<<endl;
+        cout <<"            2 - VER GASTOS REALIZADOS" << endl<<endl;
         cout <<"------------------------------------------------------------------ "<< endl<< endl;
         cout <<"            0 - VOLVER AL MENU PRINCIPAL." << endl;
         cout << endl << endl << "OPCIÓN: ";
@@ -26,10 +26,10 @@ void MenuGasto(){
                     case 0:
                         break;
                     case 1:
-                    cout <<"                   CARGAR NUEVO GASTO"<<endl;
-                    cout<<"------------------------------------------------------------------"<<endl;
-                    AgregarGasto();
-                    cls();
+                        cout <<"                   CARGAR NUEVO GASTO"<<endl;
+                        cout<<"------------------------------------------------------------------"<<endl;
+                        AgregarGasto();
+                        cls();
                         break;
 
                     case 2:
@@ -38,8 +38,8 @@ void MenuGasto(){
                         cls();
                     break;
                     default:
-                        cout <<endl << endl<< " ********  OPCIÓN    INCORRECTA  ******** " << endl;
-                        cout <<endl << endl<< endl;
+                        cout << endl << endl << " ********  OPCIÓN    INCORRECTA  ******** " << endl;
+                        cout << endl << endl << endl;
                     break;
 
             }

@@ -28,7 +28,7 @@ void AgregarGasto(){
     while(montoUnitario<=0)
     {
 
-        cout << "MONTO INVÁLIDO , INGRESE OTRO O (-1) PARA CANCELAR " << endl;
+        cout << "MONTO INVÁLIDO, INGRESE OTRO O (-1) PARA CANCELAR " << endl;
         EntradaNumerica(montoUnitario);
         if(montoUnitario==-1) return;
 

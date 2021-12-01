@@ -43,7 +43,7 @@ FacturaModel SeleccionarFactura()
     FacturaModel factura;
     cls();
     int id;
-    cout << "POR FAVOR, INGRESE EL ID DE LA FACTURA  QUE DESEA ABRIR: ";
+    cout << "POR FAVOR, INGRESE EL ID DE LA FACTURA QUE DESEA ABRIR: ";
     EntradaNumerica(id);
     while(id<1)
     {

@@ -24,6 +24,7 @@ void RegistrarCompraProducto()
         MostrarDatosActuales(producto);
         int cantidad = PedirCantidad();
         float precioUnitario = PedirPrecioUnitario();
+        if(precioUnitario==-1) return;
         producto.agregarStock(cantidad);
 
         while(!ProductoManager::sobreescribir(producto))
@@ -79,9 +80,9 @@ float PedirPrecioUnitario()
     EntradaNumerica(precio);
     while( precio<=0)
     {
-
-        cout << "EL MONTO INGRESADO NO ES VÁLIDO, POR FAVOR, INGRESE NUEVAMENTE" << endl;
+        cout << "EL MONTO INGRESADO NO ES VÁLIDO, POR FAVOR, INGRESE OTRO O -1 PARA REGRESAR" << endl;
         EntradaNumerica(precio);
+        if(precio==-1) return -1;
     }
     return precio;
 }

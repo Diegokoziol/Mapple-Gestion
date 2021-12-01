@@ -35,8 +35,6 @@ void ImprimirGastos()
     vector<GastoModel> gastos = GastoManager::leerTodos();
     for (size_t i=0;i<gastos.size(); i++)
         ImprimirGasto(gastos[i]);
-
-
 }
 void ImprimirGasto(GastoModel &gasto)
 {
